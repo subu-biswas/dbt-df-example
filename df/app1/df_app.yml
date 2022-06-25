@@ -1,0 +1,14 @@
+name: 'DBT Application1'
+version: 1.0
+actions:
+  - unique_name: audit_helper.compare_column_values
+    action_reference: audit_helper.compare_column_values
+    parameters:
+      - param_reference: 'a_query'
+        df_param_type: table
+      - param_reference: 'b_query'
+        df_param_type: table
+      - param_reference: 'primary_key'
+        df_param_type: column
+      - param_reference: 'column_to_compare'
+        df_param_type: column
