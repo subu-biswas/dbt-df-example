@@ -1,7 +1,7 @@
-name: 'DBT Application2'
+name: 'DBT Application 2'
 version: 1.0
 actions:
-  - unique_name: audit_helper.compare_column_values_1
+  - unique_name: audit_helper.compare_column_values_2
     action_reference: audit_helper.compare_column_values
     parameters:
       - param_name: 'a_query'

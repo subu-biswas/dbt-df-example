@@ -1,4 +1,4 @@
-name: 'DBT Application1'
+name: 'DBT Application 1'
 version: 1.0
 actions:
   - unique_name: audit_helper.compare_column_values
