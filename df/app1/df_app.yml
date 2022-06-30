@@ -3,15 +3,15 @@ version: 1.0
 display_name: "Demo DBT Application"
 description: "It's a demo DBT application."
 actions:
-  - unique_name: audit_helper.compare_column_values
-    display_name: "Compare two Tables"
-    action_reference: audit_helper.compare_column_values
+  - unique_name: "Compare Two Tables"
+    display_name: "Compare Two Tables"
+    action_reference: compare_column_from_two_tables
     parameters:
-      - param_name: "a_query"
+      - param_name: "table1"
         df_param_type: table
         display_name: "First Table"
         description: "First Table"
-      - param_name: "b_query"
+      - param_name: "table2"
         df_param_type: table
         display_name: "Second Table"
         description: ""
