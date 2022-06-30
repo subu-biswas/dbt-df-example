@@ -44,3 +44,6 @@ actions:
       - param_name: 'date_time_frequency'
         df_param_type: string
         single_select_options: ["Business Days","Calendar Days","Hours","Minutes","Months","Seconds","Weeks","Years"]
+      - param_name: 'value_type'
+        display_name: "Aggregation Type"
+        single_select_options: ["Count","Count Percentage","Unique Count","Average","Maximum","Minimum","Median","Total"]
