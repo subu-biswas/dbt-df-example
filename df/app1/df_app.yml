@@ -2,6 +2,7 @@ name: 'DBT Application 1'
 version: 1.0
 actions:
   - unique_name: audit_helper.compare_column_values
+    display_name: "Compare two Tables"
     action_reference: audit_helper.compare_column_values
     parameters:
       - param_name: 'a_query'
