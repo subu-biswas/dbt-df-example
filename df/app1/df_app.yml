@@ -46,4 +46,5 @@ actions:
         single_select_options: ["Business Days","Calendar Days","Hours","Minutes","Months","Seconds","Weeks","Years"]
       - param_name: 'value_type'
         display_name: "Aggregation Type"
+        df_param_type: "string"
         single_select_options: ["Count","Count Percentage","Unique Count","Average","Maximum","Minimum","Median","Total"]
