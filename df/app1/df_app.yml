@@ -1,18 +1,28 @@
-name: 'DBT Application 1'
+name: "DBTApplication1"
 version: 1.0
+display_name: "Demo DBT Application"
+description: "It's a demo DBT application."
 actions:
   - unique_name: audit_helper.compare_column_values
     display_name: "Compare two Tables"
     action_reference: audit_helper.compare_column_values
     parameters:
-      - param_name: 'a_query'
+      - param_name: "a_query"
         df_param_type: table
-      - param_name: 'b_query'
+        display_name: "First Table"
+        description: "First Table"
+      - param_name: "b_query"
         df_param_type: table
-      - param_name: 'primary_key'
+        display_name: "Second Table"
+        description: ""
+      - param_name: "primary_key"
         df_param_type: column
-      - param_name: 'column_to_compare'
+        description: ""
+        display_name: "Primary Key of First Table"
+      - param_name: "column_to_compare"
         df_param_type: column
+        description: ""
+        display_name: "Column to compare"
 
   - unique_name: date_time_summary
     source_type: "python"
@@ -21,10 +31,14 @@ actions:
     parameters:
       - param_name: 'data'
         df_param_type: table
+        display_name: "Target Table"
       - param_name: 'date_time_axis'
         df_param_type: column
+        display_name: "Date Time Column"
+        df_tags: ["Date", "DateTime"]
       - param_name: 'value'
         df_param_type: column
+        display_name: "Target Column"
       - param_name: 'sql_filter'
         df_param_type: string
       - param_name: 'date_time_frequency'
