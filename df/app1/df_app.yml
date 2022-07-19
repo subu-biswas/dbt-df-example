@@ -30,8 +30,8 @@ actions:
       - kind: 'line'
         name: 'chart_name'
         options:
-          - x: "{column_x}"
-            y: "{column_y}"
+          x: "{column_x}"
+          y: "{column_y}"
     parameters:
       - param_name: "table1"
         df_param_type: table
