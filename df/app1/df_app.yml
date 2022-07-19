@@ -23,6 +23,25 @@ actions:
         df_param_type: column
         description: ""
         display_name: "Column to compare"
+  
+  - unique_name: "Test plots"
+    action_reference: test_charts
+    charts: 
+      - kind: 'line'
+        name: 'chart_name'
+        options:
+          - x: "{column_x}"
+            y: "{column_y}"
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "Table"
+      - param_name: "column_x"
+        df_param_type: column
+        description: ""
+      - param_name: "column_y"
+        df_param_type: column
+        description: ""
 
   - unique_name: date_time_summary
     source_type: "python"
