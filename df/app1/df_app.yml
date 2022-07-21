@@ -29,6 +29,7 @@ actions:
     charts: 
       - kind: 'line'
         name: 'chart_name'
+        expose_data: true
         options:
           x: "{column_x}"
           y: "{column_y}"
