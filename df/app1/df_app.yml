@@ -76,7 +76,7 @@ actions:
         options:
           x: "{column_x}"
           y: "{column_y}"
-          segment_column: "{segment_column}"
+          segments: "{segment_column}"
     parameters:
       - param_name: "table1"
         df_param_type: table
