@@ -13,7 +13,7 @@ actions:
       - param_name: 'column_to_compare'
         df_param_type: column
   - unique_name: analyze_trends_sql
-    action_reference: analyze_trends_sql
+    action_reference: analyze_trend_sql
     charts:
       - kind: 'bar'
         name: 'trends'
