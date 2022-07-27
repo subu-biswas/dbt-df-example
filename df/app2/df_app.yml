@@ -12,3 +12,21 @@ actions:
         df_param_type: column
       - param_name: 'column_to_compare'
         df_param_type: column
+  - unique_name: analyze_trends_sql
+    action_reference: analyze_trends_sql
+    charts:
+      - kind: 'bar'
+        name: 'trends'
+        options:
+          x: {dim_column}
+          y: result
+    parameters:
+      - param_name: input_table
+        df_param_type: table
+      - param_name: dim_column
+        df_param_type: column
+      - param_name: target_column
+        df_param_type: column
+      - param_name: agg_function
+        df_param_type: string_no_quotes
+        single_select_options: ["SUM", "AVG", "COUNT"]
