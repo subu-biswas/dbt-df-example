@@ -3,32 +3,34 @@
 WITH Sales_Agg AS {
     SELECT
         SUM(m_amount) AS sum_sales_amount,
-        dim_region
-    FROM {{ ref("fct_sales") }}
+        dim_region,
+        ds
+    FROM {{ ref("raw_fct_sales") }}
     WHERE dim_region = region
     GROUP BY dim_region, ds
 },
 Agg_Customer_Support_Case AS {
     SELECT
         COUNT(1) AS count_case,
-        dim_region
-    FROM {{ ref("fct_customer_support_cases") }}
-    WHERE dim_region = region
+        dim_region,
+        ds
+    FROM {{ ref("raw_fct_customer_support_cases") }}
+    WHERE dim_region = region AND related_product = product
     GROUP BY dim_region, ds
 },
 Agg_Campaign AS {
     SELECT
         COUNT(1) as count_campaign,
         dim_region
-    FROM {{ ref("fct_campaign") }}
-    WHERE dim_region = region
+    FROM {{ ref("raw_fct_campaign") }}
+    WHERE dim_region = region AND product=product
     GROUP BY dim_region, ds
 },
 Agg_Diff_With_Competitor_Price AS {
     SELECT
         SUM(m_competing_price - m_price) as diff_price,
         dim_region
-    FROM {{ ref("fct_competing_product") }}
+    FROM {{ ref("raw_fct_competing_product") }}
     WHERE
         id_product = product AND
         dim_region = region

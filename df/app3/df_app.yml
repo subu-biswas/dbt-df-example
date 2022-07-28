@@ -1,14 +1,10 @@
 name: 'DBT Application 3'
 version: 1.0
 actions:
-  - unique_name: audit_helper.compare_column_values_3
-    action_reference: audit_helper.compare_column_values
+  - unique_name: investigate_sales_drop
+    action_reference: investigate_sales_drop
     parameters:
-      - param_name: 'a_query'
-        df_param_type: table
-      - param_name: 'b_query'
-        df_param_type: table
-      - param_name: 'primary_key'
-        df_param_type: column
-      - param_name: 'column_to_compare'
-        df_param_type: column
+      - param_name: 'region'
+        df_param_type: string
+      - param_name: 'product'
+        df_param_type: string
