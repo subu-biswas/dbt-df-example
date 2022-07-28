@@ -1,6 +1,6 @@
 {% macro investigate_sales_drop(region, product) %}
 
-WITH Sales_Agg AS {
+WITH Sales_Agg AS (
     SELECT
         SUM(m_amount) AS sum_sales_amount,
         dim_region,
@@ -8,8 +8,8 @@ WITH Sales_Agg AS {
     FROM {{ ref("raw_fct_sales") }}
     WHERE dim_region = region
     GROUP BY dim_region, ds
-},
-Agg_Customer_Support_Case AS {
+),
+Agg_Customer_Support_Case AS (
     SELECT
         COUNT(1) AS count_case,
         dim_region,
@@ -17,16 +17,16 @@ Agg_Customer_Support_Case AS {
     FROM {{ ref("raw_fct_customer_support_cases") }}
     WHERE dim_region = region AND related_product = product
     GROUP BY dim_region, ds
-},
-Agg_Campaign AS {
+),
+Agg_Campaign AS (
     SELECT
         COUNT(1) as count_campaign,
         dim_region
     FROM {{ ref("raw_fct_campaign") }}
     WHERE dim_region = region AND product=product
     GROUP BY dim_region, ds
-},
-Agg_Diff_With_Competitor_Price AS {
+),
+Agg_Diff_With_Competitor_Price AS (
     SELECT
         SUM(m_competing_price - m_price) as diff_price,
         dim_region
@@ -35,7 +35,7 @@ Agg_Diff_With_Competitor_Price AS {
         id_product = product AND
         dim_region = region
     GROUP BY dim_region, ds
-}
+)
 SELECT
     sum_sales_amount,
     count_campaign,
