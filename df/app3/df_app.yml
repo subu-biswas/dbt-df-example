@@ -15,24 +15,24 @@ actions:
       - kind: "bar"
         name: "Sales Trend"
         options:
-          x: "ds"
-          y: sum_sales_amount
+          x: "DS"
+          y: "SUM_SALES_AMOUNT"
       - kind: "bar"
         name: "Campaign Count"
         options:
-          x: "ds"
-          y: "count_campaign"
+          x: "DS"
+          y: "COUNT_CAMPAIGN"
       - kind: "bar"
         name: "Competitor Price Difference"
         options:
-          x: "ds"
-          y: "diff_price"
+          x: "DS"
+          y: "DIFF_PRICE"
       - kind: "bar"
         name: "Case Count"
         options:
-          x: "ds"
-          y: "count_case"
-    
+          x: "DS"
+          y: "COUNT_CASE"
+
   - unique_name: investigate_sales_drop_no_charts
     display_name: Investigate Sales Drop by Product & Region (No Charts)
     action_reference: investigate_sales_drop
