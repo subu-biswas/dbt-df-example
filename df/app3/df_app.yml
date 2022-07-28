@@ -32,3 +32,14 @@ actions:
         options:
           x: "ds"
           y: "count_case"
+    
+  - unique_name: investigate_sales_drop_no_charts
+    display_name: Investigate Sales Drop by Product & Region (No Charts)
+    action_reference: investigate_sales_drop
+    parameters:
+      - param_name: 'region'
+        df_param_type: string
+        single_select_options: ["US_WA", "US_CA", "US_NY", "US_OR"]
+      - param_name: 'product'
+        df_param_type: string
+        single_select_options: ["Product1", "Product2", "Product3", "Product4", "Product5", "Product6", "Product7", "Product8", "Product9", "Product10"]
