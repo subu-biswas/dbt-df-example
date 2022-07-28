@@ -1,4 +1,4 @@
-id_sales,id_customer,sales_rep,id_product,dim_region,m_amount,ds
+id_sales,id_customer,sales_rep,dim_product,dim_region,m_amount,ds
 1,6873,Paul,Product1,US_OR,88,2022-01-01
 2,473,Nancy,Product1,US_OR,88,2022-01-01
 3,7637,Sam,Product1,US_WA,88,2022-01-01

@@ -1,4 +1,4 @@
-id_campaign,campaign_type,region,product,ds
+id_campaign,campaign_type,dim_region,dim_product,ds
 1,Email,US_WA,Product1,2022-01-01
 1,Email,US_WA,Product1,2022-01-01
 1,Email,US_WA,Product1,2022-01-01
