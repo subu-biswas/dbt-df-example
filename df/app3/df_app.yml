@@ -12,23 +12,23 @@ actions:
         df_param_type: string
         single_select_options: ["Product1", "Product2", "Product3", "Product4", "Product5", "Product6", "Product7", "Product8", "Product9", "Product10"]
     charts:
-      - kind: 'bar'
-        name: 'Sales Trend'
+      - kind: "bar"
+        name: "Sales Trend"
         options:
-          x: ds
+          x: "ds"
           y: sum_sales_amount
-      - kind: 'bar'
-          name: 'Campaign Count'
-          options:
-            x: ds
-            y: count_campaign
-      - kind: 'bar'
-          name: 'Competitor Price Difference'
-          options:
-            x: ds
-            y: diff_price
-      - kind: 'bar'
-          name: 'Case Count'
-          options:
-            x: ds
-            y: count_case
+      - kind: "bar"
+        name: "Campaign Count"
+        options:
+          x: "ds"
+          y: "count_campaign"
+      - kind: "bar"
+        name: "Competitor Price Difference"
+        options:
+          x: "ds"
+          y: "diff_price"
+      - kind: "bar"
+        name: "Case Count"
+        options:
+          x: "ds"
+          y: "count_case"
