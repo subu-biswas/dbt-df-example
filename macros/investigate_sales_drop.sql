@@ -21,7 +21,8 @@ Agg_Customer_Support_Case AS (
 Agg_Campaign AS (
     SELECT
         COUNT(1) as count_campaign,
-        dim_region
+        dim_region,
+        ds
     FROM {{ ref("raw_fct_campaign") }}
     WHERE dim_region = {{ region }} AND dim_product={{ product }}
     GROUP BY dim_region, ds
@@ -29,7 +30,8 @@ Agg_Campaign AS (
 Agg_Diff_With_Competitor_Price AS (
     SELECT
         SUM(m_competing_price - m_price) as diff_price,
-        dim_region
+        dim_region,
+        ds
     FROM {{ ref("raw_fct_competing_product") }}
     WHERE
         dim_product = {{ product }} AND
@@ -41,9 +43,8 @@ SELECT
     count_campaign,
     diff_price,
     count_case,
-    dim_region,
-    ds,
-    *
+    A.dim_region,
+    A.ds
 FROM
     Sales_Agg A
 LEFT JOIN
