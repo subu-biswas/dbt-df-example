@@ -47,8 +47,7 @@ flows:
         df_param_type: column
         description: "table1 and tabl3 column key"
 actions:
-  - unique_name: "Compare Two Tables"
-    display_name: "Compare Two Tables"
+  - display_name: "Compare Two Tables"
     action_reference: compare_column_from_two_tables
     parameters:
       - param_name: "table1"
