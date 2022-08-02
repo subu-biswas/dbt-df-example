@@ -1,7 +1,7 @@
 name: 'DBT Application 3'
 version: 1.0
 actions:
-  - unique_name: investigate_sales_drop
+  - unique_name: investigate_sales_drop_new
     display_name: Investigate Sales Drop by Product & Region
     action_reference: investigate_sales_drop
     parameters:
