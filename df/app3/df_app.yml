@@ -15,22 +15,22 @@ actions:
       - kind: "bar"
         name: "Sales Trend"
         options:
-          x: "DS"
+          x: "MONTH"
           y: "SUM_SALES_AMOUNT"
       - kind: "bar"
         name: "Campaign Count"
         options:
-          x: "DS"
+          x: "MONTH"
           y: "COUNT_CAMPAIGN"
       - kind: "bar"
         name: "Competitor Price Difference"
         options:
-          x: "DS"
+          x: "MONTH"
           y: "DIFF_PRICE"
       - kind: "bar"
         name: "Case Count"
         options:
-          x: "DS"
+          x: "MONTH"
           y: "COUNT_CASE"
 
   - unique_name: investigate_sales_drop_no_charts
