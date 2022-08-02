@@ -19,7 +19,7 @@ flows:
           - param_name: column_to_compare
             global_parameter: column_to_compare_1_2
       - action_reference: "Compare Two Tables"
-        display_name: "Flow Action 2"
+        display_name: "Flow Action 2",
         stage_name: "Second stage"
         parameters:
           - param_name: table1
