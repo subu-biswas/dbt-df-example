@@ -2,7 +2,7 @@ name: 'DBT Application 2'
 version: 1.0
 actions:
   - unique_name: compare_column_from_two_tables
-    action_reference: compare_column_from_two_tables
+    action_reference: compare_column_from_two_tables1
     parameters:
       - param_name: 'table1'
         df_param_type: table
