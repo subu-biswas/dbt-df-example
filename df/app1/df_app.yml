@@ -2,6 +2,50 @@ name: "DBTApplication1"
 version: 1.0
 display_name: "Demo DBT Application"
 description: "It's a demo DBT application."
+flows:
+  - unique_name: "FlowModel"
+    display_name: "Test"
+    flow_actions:
+      - action_reference: "Compare Two Tables"
+        display_name: "Flow Action 1"
+        stage_name: "First stage"
+        parameters:
+          - param_name: table1
+            global_parameter: table1
+          - param_name: table2
+            global_parameter: table2
+          - param_name: primary_key
+            global_parameter: primary_key
+          - param_name: column_to_compare
+            global_parameter: column_to_compare_1_2
+      - action_reference: "Compare Two Tables"
+        display_name: "Flow Action 2"
+        stage_name: "Second stage"
+        parameters:
+          - param_name: table1
+            global_parameter: table1
+          - param_name: table2
+            global_parameter: table3
+          - param_name: primary_key
+            global_parameter: primary_key
+          - param_name: column_to_compare
+            global_parameter: column_to_compare_1_3
+    parameters:
+      - param_name: table1
+        df_param_type: table
+      - param_name: table2
+        df_param_type: table
+      - param_name: table3
+        df_param_type: table
+      - param_name: primary_key
+        df_param_type: column
+        description: "Table1 primary key"
+      - param_name: column_to_compare_1_2
+        df_param_type: column
+        description: "Table1 and table2 column key"
+      - param_name: "column_to_compare_1_3"
+        df_param_type: column
+        description: "table1 and tabl3 column key"
 actions:
   - unique_name: "Compare Two Tables"
     display_name: "Compare Two Tables"
