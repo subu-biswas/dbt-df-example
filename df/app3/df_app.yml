@@ -12,26 +12,11 @@ actions:
         df_param_type: string
         single_select_options: ["Product1", "Product2", "Product3", "Product4", "Product5", "Product6", "Product7", "Product8", "Product9", "Product10"]
     charts:
-      - kind: "bar"
-        name: "Sales Trend"
+      - kind: "clubbed_histogram"
+        name: "Sales Drop Analysis"
         options:
-          x: "DS"
-          y: "SUM_SALES_AMOUNT"
-      - kind: "bar"
-        name: "Campaign Count"
-        options:
-          x: "DS"
-          y: "COUNT_CAMPAIGN"
-      - kind: "bar"
-        name: "Competitor Price Difference"
-        options:
-          x: "DS"
-          y: "DIFF_PRICE"
-      - kind: "bar"
-        name: "Case Count"
-        options:
-          x: "DS"
-          y: "COUNT_CASE"
+          x: "MONTH"
+          y: ["SUM_SALES_AMOUNT", "COUNT_CAMPAIGN","DIFF_PRICE", "COUNT_CASE"]
 
   - unique_name: investigate_sales_drop_no_charts
     display_name: Investigate Sales Drop by Product & Region (No Charts)
