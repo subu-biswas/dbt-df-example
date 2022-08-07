@@ -6,7 +6,7 @@ WITH Sales_Agg AS (
         dim_region,
         monthname(to_date(ds)) as month
     FROM {{ ref("raw_fct_sales") }}
-    WHERE dim_region = {{ region }} AND dim_product = {{ product }}
+    WHERE dim_product IN ({{ product }}) AND dim_region IN ({{ region }})
     GROUP BY dim_region, month
 ),
 Agg_Customer_Support_Case AS (
@@ -15,7 +15,7 @@ Agg_Customer_Support_Case AS (
         dim_region,
         monthname(to_date(ds)) as month
     FROM {{ ref("raw_fct_customer_support_cases") }}
-    WHERE dim_region = {{ region }} AND dim_product = {{ product }}
+    WHERE dim_product IN ({{ product }}) AND dim_region IN ({{ region }})
     GROUP BY dim_region, month
 ),
 Agg_Campaign AS (
@@ -24,7 +24,7 @@ Agg_Campaign AS (
         dim_region,
         monthname(to_date(ds)) as month
     FROM {{ ref("raw_fct_campaign") }}
-    WHERE dim_region = {{ region }} AND dim_product={{ product }}
+    WHERE dim_product IN ({{ product }}) AND dim_region IN ({{ region }})
     GROUP BY dim_region, month
 ),
 Agg_Diff_With_Competitor_Price AS (
@@ -33,9 +33,7 @@ Agg_Diff_With_Competitor_Price AS (
         dim_region,
         monthname(to_date(ds)) as month
     FROM {{ ref("raw_fct_competing_product") }}
-    WHERE
-        dim_product = {{ product }} AND
-        dim_region = {{ region }}
+    WHERE dim_product IN ({{ product }}) AND dim_region IN ({{ region }})
     GROUP BY dim_region, month
 )
 SELECT
