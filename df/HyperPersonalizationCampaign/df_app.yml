@@ -1,7 +1,7 @@
-name: "HyperPersonalizationCampaign-From_DBT"
+name: "HyperPersonalizationCampaign_From_DBT"
 version: 1.0
-display_name: "Hyper Personalization Campaign-From_DBT"
-description: "Hyper Personalization Campaign-From_DBT"
+display_name: "Hyper Personalization Campaign From DBT"
+description: "Hyper Personalization Campaign From DBT"
 actions:
   - unique_name: fintech_data_preparation
     source_type: "python"
