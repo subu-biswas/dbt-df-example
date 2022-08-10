@@ -1,0 +1,137 @@
+name: "Hyper Personalization Campaign"
+version: 1.0
+display_name: "Hyper Personalization Campaign"
+description: "Hyper Personalization Campaign"
+flows:
+  - unique_name: "FlowModel"
+    display_name: "Test"
+    flow_actions:
+      - action_reference: "Compare Two Tables"
+        display_name: "Flow Action 1"
+        stage_name: "First stage"
+        parameters:
+          - param_name: table1
+            global_parameter: table1
+          - param_name: table2
+            global_parameter: table2
+          - param_name: primary_key
+            global_parameter: primary_key
+          - param_name: column_to_compare
+            global_parameter: column_to_compare_1_2
+      - action_reference: "Compare Two Tables"
+        display_name: "Flow Action 2"
+        stage_name: "Second stage"
+        parameters:
+          - param_name: table1
+            global_parameter: table1
+          - param_name: table2
+            global_parameter: table3
+          - param_name: primary_key
+            global_parameter: primary_key
+          - param_name: column_to_compare
+            global_parameter: column_to_compare_1_3
+    parameters:
+      - param_name: table1
+        df_param_type: table
+      - param_name: table2
+        df_param_type: table
+      - param_name: table3
+        df_param_type: table
+      - param_name: primary_key
+        df_param_type: column
+        description: "Table1 primary key"
+      - param_name: column_to_compare_1_2
+        df_param_type: column
+        description: "Table1 and table2 column key"
+      - param_name: "column_to_compare_1_3"
+        df_param_type: column
+        description: "table1 and tabl3 column key"
+actions:
+  - unique_name: "Compare Two Tables"
+    display_name: "Compare Two Tables"
+    action_reference: compare_column_from_two_tables
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "First Table"
+        description: "First Table"
+      - param_name: "table2"
+        df_param_type: table
+        display_name: "Second Table"
+        description: ""
+      - param_name: "primary_key"
+        df_param_type: column
+        description: ""
+        display_name: "Primary Key of First Table"
+      - param_name: "column_to_compare"
+        df_param_type: column
+        description: ""
+        display_name: "Column to compare"
+  
+  - unique_name: "Test plots"
+    action_reference: test_charts
+    charts: 
+      - kind: 'line'
+        name: 'chart_name'
+        expose_data: true
+        options:
+          x: "{column_x}"
+          y: "{column_y}"
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "Table"
+      - param_name: "column_x"
+        df_param_type: column
+        description: ""
+      - param_name: "column_y"
+        df_param_type: column
+        description: ""
+
+  - unique_name: fintech_data_preparation
+    source_type: "python"
+    action_reference: "src/fintech_data_preparation"
+    display_name: "Fintech Data Preparation"
+    parameters:
+      - param_name: 'data'
+        df_param_type: table
+        display_name: "Target Table"
+      - param_name: 'date_time_axis'
+        df_param_type: column
+        display_name: "Date Time Column"
+        df_tags: ["Date", "DateTime"]
+      - param_name: 'value'
+        df_param_type: column
+        display_name: "Target Column"
+      - param_name: 'sql_filter'
+        df_param_type: string
+      - param_name: 'date_time_frequency'
+        df_param_type: string
+        single_select_options: ["Business Days","Calendar Days","Hours","Minutes","Months","Seconds","Weeks","Years"]
+      - param_name: 'value_type'
+        display_name: "Aggregation Type"
+        df_param_type: "string"
+        single_select_options: ["Count","Count Percentage","Unique Count","Average","Maximum","Minimum","Median","Total"]
+  - unique_name: "Segment plots"
+    action_reference: three_columns
+    charts: 
+      - kind: 'segment'
+        name: 'revenue per referrer'
+        options:
+          x: "{column_x}"
+          y: "{column_y}"
+          segments: "{segment_column}"
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "Table"
+      - param_name: "column_x"
+        df_param_type: column
+        description: ""
+      - param_name: "column_y"
+        df_param_type: column
+        description: ""
+      - param_name: "segment_column"
+        df_param_type: column
+        description: ""
+
