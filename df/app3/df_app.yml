@@ -7,10 +7,10 @@ actions:
     parameters:
       - param_name: 'region'
         df_param_type: string
-        multi_select_options: ["US_WA", "US_CA", "US_NY", "US_OR"]
+        single_select_options: ["US_WA", "US_CA", "US_NY", "US_OR"]
       - param_name: 'product'
         df_param_type: string
-        multi_select_options: ["Product1", "Product2", "Product3", "Product4", "Product5", "Product6", "Product7", "Product8", "Product9", "Product10"]
+        single_select_options: ["Product1", "Product2", "Product3", "Product4", "Product5", "Product6", "Product7", "Product8", "Product9", "Product10"]
     charts:
       - kind: "clubbed_histogram"
         name: "Sales Drop Analysis"
