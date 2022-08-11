@@ -41,14 +41,14 @@ actions:
         display_name: "method"
         default_value: "XGBoost Classifier"
         single_select_options: ["Decision Tree Classifier","Logistic Regression","Random Forest Classifier","XGBoost Classifier"]
-    - unique_name: top_screen_data_preparation
-      source_type: "python"
-      action_reference: "src/top_screen_data_preparation"
-      display_name: "Top Screen Data Preparation"
-      parameters:
-        - param_name: 'data'
-          df_param_type: table
-          display_name: "Data"
-        - param_name: 'top_screen_data'
-          df_param_type: table
-          display_name: "Top Screen Data"
+  - unique_name: top_screen_data_preparation
+    source_type: "python"
+    action_reference: "src/top_screen_data_preparation"
+    display_name: "Top Screen Data Preparation"
+    parameters:
+      - param_name: 'data'
+        df_param_type: table
+        display_name: "Data"
+      - param_name: 'top_screen_data'
+        df_param_type: table
+        display_name: "Top Screen Data"
