@@ -1,4 +1,4 @@
-name: "HyperPersonalizationCampaign_From_DBT"
+name: "Hyper Personalization Campaign From DBT"
 version: 1.0
 display_name: "Hyper Personalization Campaign From DBT"
 description: "Hyper Personalization Campaign From DBT"
@@ -11,3 +11,35 @@ actions:
       - param_name: 'data'
         df_param_type: table
         display_name: "Target Table"
+  - unique_name: propensity_calculation_cohort_building
+    source_type: "python"
+    action_reference: "src/propensity_calculation_cohort_building"
+    display_name: "Propensity Calculation Cohort Building"
+    parameters:
+      - param_name: 'source_data'
+        df_param_type: table
+        display_name: "source_data"
+      - param_name: 'transformed_data'
+        df_param_type: table
+        display_name: "transformed_data"
+      - param_name: 'target_column'
+        df_param_type: column
+        display_name: "target_column"
+        default_value: "enrolled"
+      - param_name: 'CustomerID'
+        df_param_type: column
+        display_name: "CustomerID"
+        default_value: "user"
+      - param_name: 'propensity_lower_limit'
+        df_param_type: decimal
+        display_name: "propensity_lower_limit"
+        default_value: "user"
+      - param_name: 'propensity_upper_limit'
+        df_param_type: decimal
+        display_name: "propensity_upper_limit"
+        default_value: "user"
+      - param_name: 'method'
+        df_param_type: string
+        display_name: "method"
+        default_value: "XGBoost Classifier"
+        single_select_options: ["Decision Tree Classifier","Logistic Regression","Random Forest Classifier","XGBoost Classifier"]
