@@ -33,13 +33,22 @@ actions:
       - param_name: 'propensity_lower_limit'
         df_param_type: decimal
         display_name: "propensity_lower_limit"
-        default_value: "user"
       - param_name: 'propensity_upper_limit'
         df_param_type: decimal
         display_name: "propensity_upper_limit"
-        default_value: "user"
       - param_name: 'method'
         df_param_type: string
         display_name: "method"
         default_value: "XGBoost Classifier"
         single_select_options: ["Decision Tree Classifier","Logistic Regression","Random Forest Classifier","XGBoost Classifier"]
+    - unique_name: top_screen_data_preparation
+      source_type: "python"
+      action_reference: "src/top_screen_data_preparation"
+      display_name: "Top Screen Data Preparation"
+      parameters:
+        - param_name: 'data'
+          df_param_type: table
+          display_name: "Data"
+        - param_name: 'top_screen_data'
+          df_param_type: table
+          display_name: "Top Screen Data"
