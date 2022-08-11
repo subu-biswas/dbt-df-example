@@ -76,3 +76,4 @@ actions:
       - param_name: "value_type"
         df_param_type: string
         display_name: "value_type"
+        single_select_options: ["Count","Count Percentage","Unique Count","Average","Maximum","Minimum","Median","Total"]
