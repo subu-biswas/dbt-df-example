@@ -1,0 +1,85 @@
+name: "Data_Preparation"
+version: 1.1
+display_name: "Data Preperation for HyperPersonalisation"
+description: "This app contains actions and flows that uses DBT to prepare the final datasets needed for running the Discounting HyperPersonalisation application"
+actions:
+  - unique_name: "last 24 hour app table"
+    display_name: "First class table for app data of new users"
+    action_reference: nine_columns
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "input table"
+        description: "select the input table here"
+      - param_name: "column_1"
+        df_param_type: column
+        display_name: "Column 1"
+        description: "select the 1st column here"
+      - param_name: "column_2"
+        df_param_type: column
+        display_name: "Column 2"
+        description: "select the 2nd column here"
+      - param_name: "column_3"
+        df_param_type: column
+        display_name: "Column 3"
+        description: "select the 3rd column here"
+      - param_name: "column_4"
+        df_param_type: column
+        display_name: "Column 4"
+        description: "select the 4th column here"
+      - param_name: "column_5"
+        df_param_type: column
+        display_name: "Column 5"
+        description: "select the 5th column here"
+      - param_name: "column_6"
+        df_param_type: column
+        display_name: "Column 6"
+        description: "select the 6th column here"
+      - param_name: "column_7"
+        df_param_type: column
+        display_name: "Column 7"
+        description: "select the 7th column here"
+      - param_name: "column_8"
+        df_param_type: column
+        display_name: "Column 8"
+        description: "select the 8th column here"
+      - param_name: "column_9"
+        df_param_type: column
+        display_name: "Column 9"
+        description: "select the 9th column here"
+  - unique_name: "join tables"
+    display_name: "Join demography data with CLTV data"
+    action_reference: table_join
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "input demography table"
+        description: "select the demography table here"
+      - param_name: "table2"
+        df_param_type: table
+        display_name: "input CLTV table"
+        description: "select the CLTV table here"
+      - param_name: "keycolumn1"
+        df_param_type: column
+        display_name: "user_id of demography dataset"
+        description: "select the user_id column of demography dataset here"
+      - param_name: "keycolumn2"
+        df_param_type: column
+        display_name: "user_id of CLTV dataset"
+        description: "select the user_id column of CLTV dataset here"
+  - unique_name: "join tables same key column"
+    display_name: "Join demography data with CLTV data where both have user_id as key"
+    action_reference: table_join_skey
+    parameters:
+      - param_name: "table1"
+        df_param_type: table
+        display_name: "input demography table"
+        description: "select the demography table here"
+      - param_name: "table2"
+        df_param_type: table
+        display_name: "input CLTV table"
+        description: "select the CLTV table here"
+      - param_name: "keycolumn"
+        df_param_type: column
+        display_name: "user_id of demography and CLTV dataset"
+        description: "select the user_id column of demography and CLTV dataset here"
