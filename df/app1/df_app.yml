@@ -40,6 +40,7 @@ applications:
     components:
       - type: chart
         size: m
+        label: Some chart with data
         component_config:
           action_reference: Plot_3_columns  
       - type: output
