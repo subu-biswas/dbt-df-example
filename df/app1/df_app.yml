@@ -7,7 +7,7 @@ applications:
     display_name: My first application
     description: This is some random description
     parameters:
-      - parameter_name: Table Input
+      - param_name: Table Input
         df_param_type: table
       - param_name: "column_x for charts"
         df_param_type: column
