@@ -16,6 +16,7 @@ applications:
         df_param_type: column
       - param_name: segement_column
         df_param_type: column
+        df_tags: ["some column tag"]
     flows_and_actions:
       - action_reference: "Segment Plots"
         unique_name: Plot_3_columns
