@@ -2,6 +2,69 @@ name: "DBTApplication1"
 version: 1.0
 display_name: "Demo DBT Application"
 description: "It's a demo DBT application."
+applications:
+  - name: Sample_Application
+    display_name: My first application
+    description: This is some random description
+    parameters:
+      - parameter_name: Table Input
+        df_param_type: table
+      - param_name: "column_x for charts"
+        df_param_type: column
+        description: "Please work"
+      - param_name: "column_y for charts"
+        df_param_type: column
+      - param_name: segement_column
+    flows_and_actions:
+      - action_reference: "Segment Plots"
+        unique_name: Plot_3_columns
+        parameter_config:
+          - param_name: "table1"
+            global_parameter: Table Input
+          - param_name: "column_x"
+            global_parameter: column_x for charts
+          - param_name: "column_y"
+            global_parameter: column_y for charts
+          - param_name: "segment_column"
+            global_parameter: segment_column
+      - action_reference: Test plots
+        unique_name: Testing_plots
+        parameter_config:
+          - param_name: "table1"
+            global_parameter: table
+            display_name: "Table"
+          - param_name: "column_x"
+            df_param_type: column
+            description: ""
+          - param_name: "column_y"
+            df_param_type: column
+            description: ""
+    components:
+      - type: chart
+        component_config:
+          action_reference: Plot_3_columns
+          size: m
+      - type: output
+        component_config:
+          action_reference: Testing_plots
+          size: l
+      - type: input
+        component_config:
+          parameter_reference: Table Input
+          size: s
+      - type: input
+        component_config:
+          parameter_reference: column_x for charts
+          size: s
+      - type: input
+        component_config:
+          parameter_reference: column_y for charts
+          size: s
+      - type: input
+        component_config:
+          parameter_reference: segment_column
+          size: s
+
 flows:
   - unique_name: "FlowModel"
     display_name: "Test"
