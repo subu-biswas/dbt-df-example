@@ -39,29 +39,27 @@ applications:
             global_parameter: column_y for charts
     components:
       - type: chart
+        size: m
         component_config:
-          action_reference: Plot_3_columns
-          size: m
+          action_reference: Plot_3_columns  
       - type: output
+        size: l
         component_config:
-          action_reference: Testing_plots
-          size: l
+          action_reference: Testing_plots        
       - type: input
+        size: s
         component_config:
-          parameter_reference: Table Input
-          size: s
+          parameter_reference: Table Input  
       - type: input
+        size: s
         component_config:
           parameter_reference: column_x for charts
-          size: s
       - type: input
         component_config:
           parameter_reference: column_y for charts
-          size: s
       - type: input
         component_config:
           parameter_reference: segment_column
-          size: s
 
 flows:
   - unique_name: "FlowModel"
