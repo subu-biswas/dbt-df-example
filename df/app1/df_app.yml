@@ -67,7 +67,7 @@ applications:
           flow_index: 1
         navigation:
           - name: First ever navigation
-            navigation_to: action
+            navigate_to: action
             navigation_details:
               type: table_input
               reference: Compare Two Tables
