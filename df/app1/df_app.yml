@@ -33,13 +33,10 @@ applications:
         parameter_config:
           - param_name: "table1"
             global_parameter: table
-            display_name: "Table"
           - param_name: "column_x"
-            df_param_type: column
-            description: ""
+            global_parameter: column_x for charts
           - param_name: "column_y"
-            df_param_type: column
-            description: ""
+            global_parameter: column_y for charts
     components:
       - type: chart
         component_config:
