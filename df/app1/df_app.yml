@@ -14,7 +14,7 @@ applications:
         description: "Please work"
       - param_name: "column_y for charts"
         df_param_type: column
-      - param_name: segement_column
+      - param_name: segment_column
         df_param_type: column
         df_tags: ["some column tag"]
     flows_and_actions:
