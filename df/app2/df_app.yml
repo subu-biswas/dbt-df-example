@@ -30,3 +30,8 @@ actions:
       - param_name: agg_function
         df_param_type: string_no_quotes
         single_select_options: ["SUM", "AVG", "COUNT"]
+  - unique_name: row_count
+    action_path: actions/row_count.sql
+    parameters:
+      - param_name: table_name
+        df_param_type: table
