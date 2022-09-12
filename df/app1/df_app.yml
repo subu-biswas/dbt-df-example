@@ -33,7 +33,7 @@ applications:
         unique_name: Testing_plots
         parameter_config:
           - param_name: "table1"
-            global_parameter: table
+            global_parameter: Table Input
           - param_name: "column_x"
             global_parameter: column_x for charts
           - param_name: "column_y"
