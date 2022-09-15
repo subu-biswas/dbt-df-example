@@ -31,7 +31,7 @@ actions:
         df_param_type: string_no_quotes
         single_select_options: ["SUM", "AVG", "COUNT"]
   - unique_name: row_count
-    action_reference: actions/row_count.sql
+    action_reference: row_count.sql
     source_type: df_sql
     parameters:
       - param_name: table_name
