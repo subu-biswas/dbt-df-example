@@ -78,6 +78,7 @@ actions:
   - param_name: table_nam
     df_param_type: table
     display_name: table_nam
+    description: table_nam
     default_value: my new table
     df_tags:
     - some tag
