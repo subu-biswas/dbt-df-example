@@ -103,7 +103,7 @@ flows:
   - action_reference: analyze_trends_sql
     parameters:
     - param_name: input_table
-      global_parameter: table 1
+      source_action: Compare Two Tables-0
     - param_name: dim_column
       default_value: dim_col
     - param_name: target_column
