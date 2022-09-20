@@ -84,3 +84,48 @@ actions:
     - some tag
     user_input_required: true
   source_type: df_sql
+flows:
+- unique_name: sample
+  flow_actions:
+  - action_reference: analyze_trends_sql
+    parameters:
+    - param_name: input_table
+      global_parameter: table 1
+    - param_name: dim_column
+      default_value: dim_col
+    - param_name: target_column
+      global_parameter: target
+    - param_name: agg_function
+      default_value: AVG
+    display_name: analyze_trends_sql
+    stage_name: Enter Stage Name here
+  - action_reference: test
+    parameters:
+    - param_name: table
+      global_parameter: table 1
+    display_name: test
+    stage_name: Second stage
+    application_name: Default Application
+  display_name: sample
+  parameters:
+  - param_name: pk
+    df_param_type: column
+    display_name: pk
+    user_input_required: true
+  - param_name: c2c
+    df_param_type: column
+    display_name: c2c
+    user_input_required: true
+  - param_name: target
+    df_param_type: column
+    display_name: target
+    user_input_required: true
+  - param_name: table 2
+    df_param_type: table
+    display_name: table 2
+    user_input_required: true
+  - param_name: table 1
+    df_param_type: table
+    display_name: table 1
+    user_input_required: true
+  description: some
