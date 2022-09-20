@@ -112,12 +112,15 @@ flows:
       default_value: AVG
     display_name: analyze_trends_sql
     stage_name: Enter Stage Name here
+  - action_reference: test
+    parameters:
+    - param_name: table
+      global_parameter: table 1
+    display_name: test
+    stage_name: Second stage
+    application_name: Default Application
   display_name: sample
   parameters:
-  - param_name: table 1
-    df_param_type: table
-    display_name: table 1
-    user_input_required: true
   - param_name: table 2
     df_param_type: table
     display_name: table 2
@@ -133,5 +136,9 @@ flows:
   - param_name: target
     df_param_type: column
     display_name: target
+    user_input_required: true
+  - param_name: table 1
+    df_param_type: table
+    display_name: table 1
     user_input_required: true
   description: some
