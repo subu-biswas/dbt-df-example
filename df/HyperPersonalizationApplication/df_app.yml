@@ -4,3 +4,19 @@ display_name: HyperPersonalizationApplication
 description: This application analysis the behaviour of the user in the app in the
   free trial to determine the probability of conversion to a paid subscriber.
 state: draft
+actions:
+- unique_name: top_screen_data_preparation
+  action_reference: top_screen_data_preparation
+  display_name: top_screen_data_preparation
+  description: Action for converting source raw data to STP model schema.
+  state: draft
+  parameters:
+  - param_name: top_screen_data
+    df_param_type: table
+    display_name: Top Screens Data
+    user_input_required: true
+  - param_name: data
+    df_param_type: table
+    display_name: Source Data
+    user_input_required: true
+  source_type: python
