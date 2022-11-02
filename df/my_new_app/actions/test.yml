@@ -1,5 +1,5 @@
 unique_name: analyze_trends_sql
-action_reference: analyze_trend_sql
+action_reference: trends
 charts:
 - name: trends
   kind: bar
@@ -35,4 +35,4 @@ parameters:
   - AVG
   - COUNT
   user_input_required: true
-source_type: macro
+source_type: df_sql
