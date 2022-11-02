@@ -70,7 +70,7 @@ actions:
     user_input_required: true
   source_type: macro
 - unique_name: row_count
-  action_reference: row_count.sql
+  action_reference: row_count
   display_name: row_count
   description: row_count
   state: draft
