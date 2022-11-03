@@ -5,6 +5,399 @@ description: This application analysis the behaviour of the user in the app in t
   free trial to determine the probability of conversion to a paid subscriber.
 state: draft
 actions:
+- unique_name: customer_five_personality_traits
+  action_reference: customer_five_personality_traits
+  display_name: customer_five_personality_traits
+  description: Action to create segment profile plots and tables.
+  state: draft
+  df_tags:
+  - ModelSummary
+  parameters:
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  - param_name: CustomerID
+    df_param_type: column
+    display_name: Customer ID (Optional)
+    default_value: user
+    user_input_required: true
+  - param_name: psychographic_data
+    df_param_type: table
+    display_name: psychographic_data
+    user_input_required: true
+  - param_name: segment_column
+    df_param_type: column
+    display_name: segment_column
+    default_value: Segment
+    user_input_required: true
+  source_type: python
+- unique_name: customer_segment_profiling
+  action_reference: customer_segment_profiling
+  display_name: customer_segment_profiling
+  description: Action to create segment profile plots and tables.
+  state: draft
+  df_tags:
+  - ModelSummary
+  parameters:
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  - param_name: CustomerID
+    df_param_type: column
+    display_name: Customer ID (Optional)
+    default_value: User ID
+    user_input_required: true
+  - param_name: segment_column
+    df_param_type: column
+    display_name: segment_column
+    default_value: Segment
+    user_input_required: true
+  source_type: python
+- unique_name: merge_demographic_and_physiographic
+  action_reference: merge_demographic_and_physiographic
+  display_name: merge_demographic_and_physiographic
+  description: Action to join two tables using user specified primary key and join
+    type.
+  state: draft
+  df_tags:
+  - DataPreparation
+  parameters:
+  - param_name: df1
+    df_param_type: table
+    display_name: Source Data-1
+    description: First Source Data User Wants To Merge
+    user_input_required: true
+  - param_name: df1_key
+    df_param_type: column
+    display_name: Primary Key-1
+    description: Primary Key Of First Source Data
+    default_value: User ID
+    user_input_required: true
+  - param_name: df2_key
+    df_param_type: column
+    display_name: Primary Key-2
+    description: Primary Key Of Second Source Data
+    default_value: user
+    user_input_required: true
+  - param_name: join_type
+    df_param_type: string
+    display_name: Type Of Join
+    description: Type Of Join User Wants To Use
+    default_value: left
+    single_select_options:
+    - left
+    - right
+    - inner
+    - outer
+    - cross
+    user_input_required: true
+  - param_name: df2
+    df_param_type: table
+    display_name: Source Data-2
+    description: Second Source Data User Wants To Merge
+    user_input_required: true
+  source_type: python
+- unique_name: customer_segmentation_summary
+  action_reference: customer_segmentation_summary
+  display_name: customer_segmentation_summary
+  description: Action to generate segment count and of the data.
+  state: draft
+  df_tags:
+  - ModelSummary
+  parameters:
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  - param_name: segment_column
+    df_param_type: column
+    display_name: segment_column
+    default_value: Segment
+    user_input_required: true
+  source_type: python
+- unique_name: customer_frequency_summary_plot
+  action_reference: customer_frequency_summary_plot
+  display_name: customer_frequency_summary_plot
+  description: Action To Generate Frequency Plot Using Two Variable(Bar Chart/Line
+    Chart/Histogram).
+  state: draft
+  df_tags:
+  - DataVisualization
+  parameters:
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  - param_name: axis
+    df_param_type: column
+    display_name: axis
+    user_input_required: true
+  - param_name: legend
+    df_param_type: column
+    display_name: legend
+    default_value: Segment
+    user_input_required: true
+  - param_name: sql_filter
+    df_param_type: string
+    display_name: sql_filter
+    default_value: optional
+    user_input_required: true
+  - param_name: number_of_class
+    df_param_type: int
+    display_name: number_of_class
+    default_value: '6'
+    user_input_required: true
+  source_type: python
+- unique_name: physiographic_data_preparation
+  action_reference: physiographic_data_preparation
+  display_name: physiographic_data_preparation
+  description: Action for converting source raw data to STP model schema.
+  state: draft
+  parameters:
+  - param_name: data
+    df_param_type: table
+    display_name: Source Data
+    user_input_required: true
+  - param_name: physiographic_column_info
+    df_param_type: table
+    display_name: Physiographic Data Information
+    user_input_required: true
+  source_type: python
+- unique_name: customer_summary_plots
+  action_reference: customer_summary_plots
+  display_name: customer_summary_plots
+  description: Action To Generate 2 Dimensional Single Axis Multiple Variable Summary
+    Plot.
+  state: draft
+  df_tags:
+  - DataVisualization
+  parameters:
+  - param_name: axis
+    df_param_type: string
+    display_name: axis
+    user_input_required: true
+  - param_name: legend
+    df_param_type: string
+    display_name: legend
+    user_input_required: true
+  - param_name: value
+    df_param_type: string
+    display_name: value
+    user_input_required: true
+  - param_name: value_type
+    df_param_type: string
+    display_name: value_type
+    single_select_options:
+    - Count
+    - Count Percentage
+    - Unique Count
+    - Average
+    - Maximum
+    - Minimum
+    - Median
+    - Total
+    user_input_required: true
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  - param_name: sql_filter
+    df_param_type: string
+    display_name: sql_filter
+    default_value: optional
+    user_input_required: true
+  source_type: python
+- unique_name: scatter_plot
+  action_reference: scatter_plot
+  display_name: scatter_plot
+  description: Action for calculating first two principal component of the RFM table
+    and add the value of those component to a new dataframe.
+  state: draft
+  parameters:
+  - param_name: segment_data
+    df_param_type: table
+    display_name: segment_data
+    user_input_required: true
+  - param_name: customer_id_column
+    df_param_type: column
+    display_name: customer_id_column
+    user_input_required: true
+  - param_name: segment_column
+    df_param_type: column
+    display_name: segment_column
+    user_input_required: true
+  source_type: python
+- unique_name: demographic_data_preparation
+  action_reference: demographic_data_preparation
+  display_name: demographic_data_preparation
+  description: Action for converting source raw data to STP model schema.
+  state: draft
+  parameters:
+  - param_name: Data
+    df_param_type: table
+    display_name: Source Data
+    description: Select the source data table from the dropdown. This table contains
+      the raw data on which you want to run segmentation. This could be sales data,
+      survey data, feedback data collected from customers. It could also be demographic,
+      psycho-graphic, firmographic or behavioral data of the customers.
+    user_input_required: true
+  source_type: python
+- unique_name: fintech_customer_cohort_analysis
+  action_reference: fintech_customer_cohort_analysis
+  display_name: fintech_customer_cohort_analysis
+  description: Action for converting source raw data to STP model schema.
+  state: draft
+  parameters:
+  - param_name: fintech_data
+    df_param_type: table
+    display_name: Source Data
+    user_input_required: true
+  - param_name: propensity_data
+    df_param_type: table
+    display_name: propensity_data
+    user_input_required: true
+  - param_name: CustomerID
+    df_param_type: column
+    display_name: CustomerID
+    default_value: user
+    user_input_required: true
+  source_type: python
+- unique_name: customer_segmentation
+  action_reference: customer_segmentation
+  display_name: customer_segmentation
+  description: Action to generate segments based on user specified method and number
+    of segments , only applied on transformed data.
+  state: draft
+  df_tags:
+  - Modeling
+  - Segmentation
+  parameters:
+  - param_name: propensity_data
+    df_param_type: table
+    display_name: propensity_data
+    user_input_required: true
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  - param_name: CustomerID
+    df_param_type: column
+    display_name: CustomerID
+    default_value: User ID
+    user_input_required: true
+  - param_name: location
+    df_param_type: string
+    display_name: location
+    multi_select_options:
+    - CHATTISGARH
+    - ORISSA
+    - WEST BENGAL
+    - PUNJAB
+    - HARYANA
+    - RAJASTHAN
+    - UTTAR PRADESH
+    - KARNATAKA
+    - ANDHRA PRADESH
+    - GUJARAT
+    - MAHARASHTRA
+    - MADHYA PRADESH
+    - BIHAR
+    - ASSAM
+    - HIMACHAL PRADESH
+    - UTTARAKHAND
+    - TELANGANA
+    - JHARKHAND
+    - DELHI
+    user_input_required: true
+  - param_name: number_of_segments
+    df_param_type: int
+    display_name: number_of_segments
+    default_value: '4'
+    user_input_required: true
+  source_type: python
+- unique_name: propensity_calculation_cohort_building
+  action_reference: propensity_calculation_cohort_building
+  display_name: propensity_calculation_cohort_building
+  description: Action to train descriptor data to generate prediction and validate
+    the segment description.
+  state: draft
+  df_tags:
+  - Modeling
+  - Prediction
+  parameters:
+  - param_name: source_data
+    df_param_type: table
+    display_name: source_data
+    df_tags:
+    - CertifiedData
+    user_input_required: true
+  - param_name: transformed_data
+    df_param_type: table
+    display_name: transformed_data
+    df_tags:
+    - CertifiedData
+    user_input_required: true
+  - param_name: target_column
+    df_param_type: column
+    display_name: target_column
+    default_value: enrolled
+    user_input_required: true
+  - param_name: CustomerID
+    df_param_type: column
+    display_name: CustomerID
+    default_value: user
+    user_input_required: true
+  - param_name: propensity_lower_limit
+    df_param_type: float
+    display_name: propensity_lower_limit
+    user_input_required: true
+  - param_name: propensity_upper_limit
+    df_param_type: float
+    display_name: propensity_upper_limit
+    user_input_required: true
+  - param_name: method
+    df_param_type: string
+    display_name: method
+    default_value: XGBoost Classifier
+    single_select_options:
+    - Decision Tree Classifier
+    - Logistic Regression
+    - Random Forest Classifier
+    - XGBoost Classifier
+    user_input_required: true
+  source_type: python
+- unique_name: fintech_data_preparation
+  action_reference: fintech_data_preparation
+  display_name: fintech_data_preparation
+  description: Action for converting source raw data to STP model schema.
+  state: draft
+  parameters:
+  - param_name: Data
+    df_param_type: table
+    display_name: Source Data
+    description: Select the source data table from the dropdown. This table contains
+      the raw data on which you want to run segmentation. This could be sales data,
+      survey data, feedback data collected from customers. It could also be demographic,
+      psycho-graphic, firmographic or behavioral data of the customers.
+    user_input_required: true
+  source_type: python
+- unique_name: top_screen_data_preparation
+  action_reference: top_screen_data_preparation
+  display_name: top_screen_data_preparation
+  description: Action for converting source raw data to STP model schema.
+  state: draft
+  parameters:
+  - param_name: data
+    df_param_type: table
+    display_name: Source Data
+    user_input_required: true
+  - param_name: top_screen_data
+    df_param_type: table
+    display_name: Top Screens Data
+    user_input_required: true
+  source_type: python
 - unique_name: customer_discount_recommendation
   action_reference: customer_discount_recommendation
   display_name: customer_discount_recommendation
@@ -16,53 +409,312 @@ actions:
   - param_name: CustomerID
     df_param_type: column
     display_name: Customer ID (Optional)
+    description: Customer ID (Optional)
     default_value: User ID
     user_input_required: true
   - param_name: propensity_data
     df_param_type: table
     display_name: propensity_data
+    description: propensity_data
     user_input_required: true
   - param_name: propensity_column
     df_param_type: column
     display_name: propensity_column
+    description: propensity_column
     default_value: Propensity
     user_input_required: true
   - param_name: lower_range_discount
     df_param_type: float
     display_name: lower_range_discount
+    description: lower_range_discount
     user_input_required: true
   - param_name: upper_range_discount
     df_param_type: float
     display_name: upper_range_discount
+    description: upper_range_discount
     user_input_required: true
   - param_name: segment_column
     df_param_type: column
     display_name: segment_column
+    description: segment_column
     default_value: Segment
     user_input_required: true
   - param_name: data
     df_param_type: table
     display_name: data
-    user_input_required: true
-  source_type: python
-- unique_name: top_screen_data_preparation
-  action_reference: top_screen_data_preparation
-  display_name: top_screen_data_preparation
-  description: Action for converting source raw data to STP model schema.
-  state: draft
-  parameters:
-  - param_name: top_screen_data
-    df_param_type: table
-    display_name: Top Screens Data
-    description: Top Screens Data
-    user_input_required: true
-  - param_name: data
-    df_param_type: table
-    display_name: Source Data
-    description: Source Data
+    description: data
     user_input_required: true
   source_type: python
 flows:
+- unique_name: Propensity calculation & cohort building
+  flow_actions:
+  - action_reference: fintech_data_preparation
+    parameters:
+    - param_name: Data
+      global_parameter: Fintech Data
+    display_name: Data Preparation
+    stage_name: Data Preparation
+  - action_reference: top_screen_data_preparation
+    parameters:
+    - param_name: top_screen_data
+      global_parameter: Top Screen Data
+    - param_name: data
+      source_action: fintech_data_preparation-0
+    display_name: Identifying Top Screens In The Customer Journey
+    stage_name: Data Preparation
+  - action_reference: propensity_calculation_cohort_building
+    parameters:
+    - param_name: method
+      default_value: XGBoost Classifier
+    - param_name: propensity_lower_limit
+      global_parameter: Enter The Lower Propensity Limit
+    - param_name: transformed_data
+      source_action: top_screen_data_preparation-1
+    - param_name: source_data
+      global_parameter: Fintech Data
+    - param_name: target_column
+      default_value: enrolled
+    - param_name: propensity_upper_limit
+      global_parameter: Enter The Upper Propensity Limit
+    - param_name: CustomerID
+      default_value: user
+    display_name: Propensity Calculation
+    stage_name: Customer Propensity Generator
+  - action_reference: fintech_customer_cohort_analysis
+    parameters:
+    - param_name: fintech_data
+      global_parameter: Fintech Data
+    - param_name: propensity_data
+      source_action: propensity_calculation_cohort_building-2
+    - param_name: CustomerID
+      default_value: user
+    display_name: Cohort Analysis
+    stage_name: Customer Propensity Generator
+  display_name: Propensity calculation & cohort building
+  parameters:
+  - param_name: Fintech Data
+    df_param_type: table
+    display_name: Fintech Data
+    user_input_required: true
+  - param_name: Top Screen Data
+    df_param_type: table
+    display_name: Top Screen Data
+    user_input_required: true
+  - param_name: Enter The Lower Propensity Limit
+    df_param_type: float
+    display_name: Enter The Lower Propensity Limit
+    description: Here you specify the number of segments for the segmentation analysis.
+    user_input_required: true
+  - param_name: Enter The Upper Propensity Limit
+    df_param_type: float
+    display_name: Enter The Upper Propensity Limit
+    description: Here you specify the number of segments for the segmentation analysis.
+    user_input_required: true
+  description: This application analysis the behaviour of the user in the app in the
+    free trial to determine the probability of conversion to a paid subscriber.
+- unique_name: Customer Segmentation And Profiling
+  flow_actions:
+  - action_reference: demographic_data_preparation
+    parameters:
+    - param_name: Data
+      global_parameter: Demographics Data
+    display_name: Demographic Data Preparation
+    stage_name: Customer Data Preparation
+  - action_reference: physiographic_data_preparation
+    parameters:
+    - param_name: data
+      global_parameter: Physiographic Data
+    - param_name: physiographic_column_info
+      global_parameter: Physiographic Data Legend
+    display_name: Physiographic Data Preparation
+    stage_name: Customer Data Preparation
+  - action_reference: merge_demographic_and_physiographic
+    parameters:
+    - param_name: df2_key
+      default_value: user
+    - param_name: join_type
+      default_value: left
+    - param_name: df1
+      source_action: demographic_data_preparation-0
+    - param_name: df1_key
+      default_value: User ID
+    - param_name: df2
+      source_action: physiographic_data_preparation-1
+    display_name: Joining Demographic And Physiographic Table
+    stage_name: Customer Data Preparation
+  - action_reference: customer_segmentation
+    parameters:
+    - param_name: number_of_segments
+      global_parameter: Number Of Segments
+    - param_name: location
+      global_parameter: Locations
+    - param_name: propensity_data
+      global_parameter: Propensity Table
+    - param_name: data
+      source_action: merge_demographic_and_physiographic-2
+    - param_name: CustomerID
+      default_value: User ID
+    display_name: Customer Segmentation
+    stage_name: Customer Segmentation
+  - action_reference: customer_segmentation_summary
+    parameters:
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: segment_column
+      default_value: Segment
+    display_name: Customer Segmentation Summary
+    stage_name: Customer Segmentation
+  - action_reference: customer_segment_profiling
+    parameters:
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: CustomerID
+      default_value: User ID
+    - param_name: segment_column
+      default_value: Segment
+    display_name: Customer Segment Profiling
+    stage_name: Customer Profiling
+  - action_reference: customer_five_personality_traits
+    parameters:
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: psychographic_data
+      global_parameter: Physiographic Data
+    - param_name: CustomerID
+      default_value: user
+    - param_name: segment_column
+      default_value: Segment
+    display_name: Physiographic Profiling
+    stage_name: Customer Profiling
+  - action_reference: customer_frequency_summary_plot
+    parameters:
+    - param_name: legend
+      default_value: Segment
+    - param_name: number_of_class
+      default_value: '6'
+    - param_name: axis
+      default_value: AGE
+    - param_name: sql_filter
+      default_value: Optional
+    - param_name: data
+      source_action: customer_segmentation-3
+    display_name: Age
+    stage_name: Visualization
+  - action_reference: customer_summary_plots
+    parameters:
+    - param_name: value_type
+      default_value: Count
+    - param_name: value
+      default_value: User ID
+    - param_name: axis
+      default_value: SEX
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: legend
+      default_value: Segment
+    - param_name: sql_filter
+      default_value: Optional
+    display_name: Gender
+    stage_name: Visualization
+  - action_reference: customer_summary_plots
+    parameters:
+    - param_name: value_type
+      default_value: Count
+    - param_name: value
+      default_value: User ID
+    - param_name: axis
+      default_value: Marital Status
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: legend
+      default_value: Segment
+    - param_name: sql_filter
+      default_value: Optional
+    display_name: Marital Status
+    stage_name: Visualization
+  - action_reference: customer_summary_plots
+    parameters:
+    - param_name: value_type
+      default_value: Count
+    - param_name: value
+      default_value: User ID
+    - param_name: axis
+      default_value: Education
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: legend
+      default_value: Segment
+    - param_name: sql_filter
+      default_value: Optional
+    display_name: Education
+    stage_name: Visualization
+  - action_reference: customer_summary_plots
+    parameters:
+    - param_name: value_type
+      default_value: Count
+    - param_name: value
+      default_value: User ID
+    - param_name: axis
+      default_value: City
+    - param_name: data
+      source_action: customer_segmentation-3
+    - param_name: legend
+      default_value: Segment
+    - param_name: sql_filter
+      default_value: Optional
+    display_name: City
+    stage_name: Visualization
+  display_name: Customer Segmentation And Profiling
+  parameters:
+  - param_name: Demographics Data
+    df_param_type: table
+    display_name: Demographics Data
+    user_input_required: true
+  - param_name: Physiographic Data
+    df_param_type: table
+    display_name: Physiographic Data
+    user_input_required: true
+  - param_name: Physiographic Data Legend
+    df_param_type: table
+    display_name: Physiographic Data Legend
+    user_input_required: true
+  - param_name: Number Of Segments
+    df_param_type: int
+    display_name: Number Of Segments
+    description: Here you specify the number of segments for the segmentation analysis.
+    default_value: '4'
+    user_input_required: true
+  - param_name: Propensity Table
+    df_param_type: table
+    display_name: Propensity Table
+    user_input_required: true
+  - param_name: Locations
+    df_param_type: string
+    display_name: Locations
+    multi_select_options:
+    - CHATTISGARH
+    - ORISSA
+    - WEST BENGAL
+    - PUNJAB
+    - HARYANA
+    - RAJASTHAN
+    - UTTAR PRADESH
+    - KARNATAKA
+    - ANDHRA PRADESH
+    - GUJARAT
+    - MAHARASHTRA
+    - MADHYA PRADESH
+    - BIHAR
+    - ASSAM
+    - HIMACHAL PRADESH
+    - UTTARAKHAND
+    - TELANGANA
+    - JHARKHAND
+    - DELHI
+    user_input_required: true
+  description: This app uses segmentation practices (algorithms) to divide customers
+    into smaller groups based on their specific characteristics like transaction history,
+    behavior, age, income, and personality.
 - unique_name: Customer Discount Recommendation
   flow_actions:
   - action_reference: customer_discount_recommendation
@@ -88,18 +740,22 @@ flows:
   - param_name: Propensity Table
     df_param_type: table
     display_name: Propensity Table
+    description: Propensity Table
     user_input_required: true
   - param_name: Customer Segmentation Data
     df_param_type: table
     display_name: Customer Segmentation Data
+    description: Customer Segmentation Data
     user_input_required: true
   - param_name: Enter The Upper Discount
     df_param_type: float
     display_name: Enter The Upper Discount
+    description: Enter The Upper Discount
     user_input_required: true
   - param_name: Enter The Lower Discount
     df_param_type: float
     display_name: Enter The Lower Discount
+    description: Enter The Lower Discount
     user_input_required: true
   description: This app generates the discount percentage for each user based on their
     activity and behavior traits.
