@@ -5,6 +5,46 @@ description: This application analysis the behaviour of the user in the app in t
   free trial to determine the probability of conversion to a paid subscriber.
 state: draft
 actions:
+- unique_name: customer_discount_recommendation
+  action_reference: customer_discount_recommendation
+  display_name: customer_discount_recommendation
+  description: Action to create segment profile plots and tables.
+  state: draft
+  df_tags:
+  - ModelSummary
+  parameters:
+  - param_name: CustomerID
+    df_param_type: column
+    display_name: Customer ID (Optional)
+    default_value: User ID
+    user_input_required: true
+  - param_name: propensity_data
+    df_param_type: table
+    display_name: propensity_data
+    user_input_required: true
+  - param_name: propensity_column
+    df_param_type: column
+    display_name: propensity_column
+    default_value: Propensity
+    user_input_required: true
+  - param_name: lower_range_discount
+    df_param_type: float
+    display_name: lower_range_discount
+    user_input_required: true
+  - param_name: upper_range_discount
+    df_param_type: float
+    display_name: upper_range_discount
+    user_input_required: true
+  - param_name: segment_column
+    df_param_type: column
+    display_name: segment_column
+    default_value: Segment
+    user_input_required: true
+  - param_name: data
+    df_param_type: table
+    display_name: data
+    user_input_required: true
+  source_type: python
 - unique_name: top_screen_data_preparation
   action_reference: top_screen_data_preparation
   display_name: top_screen_data_preparation
@@ -14,9 +54,52 @@ actions:
   - param_name: top_screen_data
     df_param_type: table
     display_name: Top Screens Data
+    description: Top Screens Data
     user_input_required: true
   - param_name: data
     df_param_type: table
     display_name: Source Data
+    description: Source Data
     user_input_required: true
   source_type: python
+flows:
+- unique_name: Customer Discount Recommendation
+  flow_actions:
+  - action_reference: customer_discount_recommendation
+    parameters:
+    - param_name: lower_range_discount
+      global_parameter: Enter The Lower Discount
+    - param_name: propensity_column
+      default_value: Propensity
+    - param_name: upper_range_discount
+      global_parameter: Enter The Upper Discount
+    - param_name: propensity_data
+      global_parameter: Propensity Table
+    - param_name: segment_column
+      default_value: Segment
+    - param_name: CustomerID
+      default_value: User ID
+    - param_name: data
+      global_parameter: Customer Segmentation Data
+    display_name: Discount Generator
+    stage_name: Generating Discounts
+  display_name: Customer Discount Recommendation
+  parameters:
+  - param_name: Propensity Table
+    df_param_type: table
+    display_name: Propensity Table
+    user_input_required: true
+  - param_name: Customer Segmentation Data
+    df_param_type: table
+    display_name: Customer Segmentation Data
+    user_input_required: true
+  - param_name: Enter The Upper Discount
+    df_param_type: float
+    display_name: Enter The Upper Discount
+    user_input_required: true
+  - param_name: Enter The Lower Discount
+    df_param_type: float
+    display_name: Enter The Lower Discount
+    user_input_required: true
+  description: This app generates the discount percentage for each user based on their
+    activity and behavior traits.
