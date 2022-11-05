@@ -1,0 +1,18 @@
+unique_name: test
+action_reference: test
+display_name: test
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  user_input_required: true
+- param_name: column
+  df_param_type: column
+  display_name: column
+  user_input_required: true
+- param_name: k
+  df_param_type: string
+  display_name: k
+  user_input_required: true
+source_type: python
