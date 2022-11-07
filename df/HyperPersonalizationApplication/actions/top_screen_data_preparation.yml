@@ -1,0 +1,15 @@
+unique_name: top_screen_data_preparation
+action_reference: top_screen_data_preparation
+display_name: top_screen_data_preparation
+description: Action for converting source raw data to STP model schema.
+state: draft
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data
+  user_input_required: true
+- param_name: top_screen_data
+  df_param_type: table
+  display_name: Top Screens Data
+  user_input_required: true
+source_type: python
