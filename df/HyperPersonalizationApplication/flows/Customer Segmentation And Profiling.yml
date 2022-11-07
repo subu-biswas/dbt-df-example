@@ -1,0 +1,203 @@
+unique_name: Customer Segmentation And Profiling
+flow_actions:
+- action_reference: demographic_data_preparation
+  parameters:
+  - param_name: Data
+    global_parameter: Demographics Data
+  display_name: Demographic Data Preparation
+  stage_name: Customer Data Preparation
+- action_reference: physiographic_data_preparation
+  parameters:
+  - param_name: data
+    global_parameter: Physiographic Data
+  - param_name: physiographic_column_info
+    global_parameter: Physiographic Data Legend
+  display_name: Physiographic Data Preparation
+  stage_name: Customer Data Preparation
+- action_reference: merge_demographic_and_physiographic
+  parameters:
+  - param_name: df2_key
+    default_value: user
+  - param_name: join_type
+    default_value: left
+  - param_name: df1
+    source_action: demographic_data_preparation-0
+  - param_name: df1_key
+    default_value: User ID
+  - param_name: df2
+    source_action: physiographic_data_preparation-1
+  display_name: Joining Demographic And Physiographic Table
+  stage_name: Customer Data Preparation
+- action_reference: customer_segmentation
+  parameters:
+  - param_name: number_of_segments
+    global_parameter: Number Of Segments
+  - param_name: location
+    global_parameter: Locations
+  - param_name: propensity_data
+    global_parameter: Propensity Table
+  - param_name: data
+    source_action: merge_demographic_and_physiographic-2
+  - param_name: CustomerID
+    default_value: User ID
+  display_name: Customer Segmentation
+  stage_name: Customer Segmentation
+- action_reference: customer_segmentation_summary
+  parameters:
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: segment_column
+    default_value: Segment
+  display_name: Customer Segmentation Summary
+  stage_name: Customer Segmentation
+- action_reference: customer_segment_profiling
+  parameters:
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: CustomerID
+    default_value: User ID
+  - param_name: segment_column
+    default_value: Segment
+  display_name: Customer Segment Profiling
+  stage_name: Customer Profiling
+- action_reference: customer_five_personality_traits
+  parameters:
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: psychographic_data
+    global_parameter: Physiographic Data
+  - param_name: CustomerID
+    default_value: user
+  - param_name: segment_column
+    default_value: Segment
+  display_name: Physiographic Profiling
+  stage_name: Customer Profiling
+- action_reference: customer_frequency_summary_plot
+  parameters:
+  - param_name: legend
+    default_value: Segment
+  - param_name: number_of_class
+    default_value: '6'
+  - param_name: axis
+    default_value: AGE
+  - param_name: sql_filter
+    default_value: Optional
+  - param_name: data
+    source_action: customer_segmentation-3
+  display_name: Age
+  stage_name: Visualization
+- action_reference: customer_summary_plots
+  parameters:
+  - param_name: value_type
+    default_value: Count
+  - param_name: value
+    default_value: User ID
+  - param_name: axis
+    default_value: SEX
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: legend
+    default_value: Segment
+  - param_name: sql_filter
+    default_value: Optional
+  display_name: Gender
+  stage_name: Visualization
+- action_reference: customer_summary_plots
+  parameters:
+  - param_name: value_type
+    default_value: Count
+  - param_name: value
+    default_value: User ID
+  - param_name: axis
+    default_value: Marital Status
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: legend
+    default_value: Segment
+  - param_name: sql_filter
+    default_value: Optional
+  display_name: Marital Status
+  stage_name: Visualization
+- action_reference: customer_summary_plots
+  parameters:
+  - param_name: value_type
+    default_value: Count
+  - param_name: value
+    default_value: User ID
+  - param_name: axis
+    default_value: Education
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: legend
+    default_value: Segment
+  - param_name: sql_filter
+    default_value: Optional
+  display_name: Education
+  stage_name: Visualization
+- action_reference: customer_summary_plots
+  parameters:
+  - param_name: value_type
+    default_value: Count
+  - param_name: value
+    default_value: User ID
+  - param_name: axis
+    default_value: City
+  - param_name: data
+    source_action: customer_segmentation-3
+  - param_name: legend
+    default_value: Segment
+  - param_name: sql_filter
+    default_value: Optional
+  display_name: City
+  stage_name: Visualization
+display_name: Customer Segmentation And Profiling
+parameters:
+- param_name: Demographics Data
+  df_param_type: table
+  display_name: Demographics Data
+  user_input_required: true
+- param_name: Physiographic Data
+  df_param_type: table
+  display_name: Physiographic Data
+  user_input_required: true
+- param_name: Physiographic Data Legend
+  df_param_type: table
+  display_name: Physiographic Data Legend
+  user_input_required: true
+- param_name: Number Of Segments
+  df_param_type: int
+  display_name: Number Of Segments
+  description: Here you specify the number of segments for the segmentation analysis.
+  default_value: '4'
+  user_input_required: true
+- param_name: Propensity Table
+  df_param_type: table
+  display_name: Propensity Table
+  user_input_required: true
+- param_name: Locations
+  df_param_type: string
+  display_name: Locations
+  multi_select_options:
+  - CHATTISGARH
+  - ORISSA
+  - WEST BENGAL
+  - PUNJAB
+  - HARYANA
+  - RAJASTHAN
+  - UTTAR PRADESH
+  - KARNATAKA
+  - ANDHRA PRADESH
+  - GUJARAT
+  - MAHARASHTRA
+  - MADHYA PRADESH
+  - BIHAR
+  - ASSAM
+  - HIMACHAL PRADESH
+  - UTTARAKHAND
+  - TELANGANA
+  - JHARKHAND
+  - DELHI
+  user_input_required: true
+description: This app uses segmentation practices (algorithms) to divide customers
+  into smaller groups based on their specific characteristics like transaction history,
+  behavior, age, income, and personality.
