@@ -23,18 +23,22 @@ parameters:
 - param_name: Propensity Table
   df_param_type: table
   display_name: Propensity Table
+  description: Propensity Table
   user_input_required: true
 - param_name: Customer Segmentation Data
   df_param_type: table
   display_name: Customer Segmentation Data
+  description: Customer Segmentation Data
   user_input_required: true
 - param_name: Enter The Upper Discount
   df_param_type: float
   display_name: Enter The Upper Discount
+  description: Enter The Upper Discount
   user_input_required: true
 - param_name: Enter The Lower Discount
   df_param_type: float
   display_name: Enter The Lower Discount
+  description: Enter The Lower Discount
   user_input_required: true
 description: This app generates the discount percentage for each user based on their
   activity and behavior traits.

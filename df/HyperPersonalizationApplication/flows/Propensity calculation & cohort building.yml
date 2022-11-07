@@ -1,0 +1,66 @@
+unique_name: Propensity calculation & cohort building
+flow_actions:
+- action_reference: fintech_data_preparation
+  parameters:
+  - param_name: Data
+    global_parameter: Fintech Data
+  display_name: Data Preparation
+  stage_name: Data Preparation
+- action_reference: top_screen_data_preparation
+  parameters:
+  - param_name: top_screen_data
+    global_parameter: Top Screen Data
+  - param_name: data
+    source_action: fintech_data_preparation-0
+  display_name: Identifying Top Screens In The Customer Journey
+  stage_name: Data Preparation
+- action_reference: propensity_calculation_cohort_building
+  parameters:
+  - param_name: method
+    default_value: XGBoost Classifier
+  - param_name: propensity_lower_limit
+    global_parameter: Enter The Lower Propensity Limit
+  - param_name: transformed_data
+    source_action: top_screen_data_preparation-1
+  - param_name: source_data
+    global_parameter: Fintech Data
+  - param_name: target_column
+    default_value: enrolled
+  - param_name: propensity_upper_limit
+    global_parameter: Enter The Upper Propensity Limit
+  - param_name: CustomerID
+    default_value: user
+  display_name: Propensity Calculation
+  stage_name: Customer Propensity Generator
+- action_reference: fintech_customer_cohort_analysis
+  parameters:
+  - param_name: fintech_data
+    global_parameter: Fintech Data
+  - param_name: propensity_data
+    source_action: propensity_calculation_cohort_building-2
+  - param_name: CustomerID
+    default_value: user
+  display_name: Cohort Analysis
+  stage_name: Customer Propensity Generator
+display_name: Propensity calculation & cohort building
+parameters:
+- param_name: Top Screen Data
+  df_param_type: table
+  display_name: Top Screen Data
+  user_input_required: true
+- param_name: Enter The Lower Propensity Limit
+  df_param_type: float
+  display_name: Enter The Lower Propensity Limit
+  description: Here you specify the number of segments for the segmentation analysis.
+  user_input_required: true
+- param_name: Enter The Upper Propensity Limit
+  df_param_type: float
+  display_name: Enter The Upper Propensity Limit
+  description: Here you specify the number of segments for the segmentation analysis.
+  user_input_required: true
+- param_name: Fintech Data
+  df_param_type: table
+  display_name: Fintech Data
+  user_input_required: true
+description: This application analysis the behaviour of the user in the app in the
+  free trial to determine the probability of conversion to a paid subscriber.

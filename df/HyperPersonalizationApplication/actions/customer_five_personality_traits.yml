@@ -1,0 +1,27 @@
+unique_name: customer_five_personality_traits
+action_reference: customer_five_personality_traits
+display_name: customer_five_personality_traits
+description: Action to create segment profile plots and tables.
+state: draft
+df_tags:
+- ModelSummary
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: data
+  user_input_required: true
+- param_name: CustomerID
+  df_param_type: column
+  display_name: Customer ID (Optional)
+  default_value: user
+  user_input_required: true
+- param_name: psychographic_data
+  df_param_type: table
+  display_name: psychographic_data
+  user_input_required: true
+- param_name: segment_column
+  df_param_type: column
+  display_name: segment_column
+  default_value: Segment
+  user_input_required: true
+source_type: python

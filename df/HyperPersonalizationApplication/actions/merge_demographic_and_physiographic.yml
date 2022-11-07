@@ -1,0 +1,43 @@
+unique_name: merge_demographic_and_physiographic
+action_reference: merge_demographic_and_physiographic
+display_name: merge_demographic_and_physiographic
+description: Action to join two tables using user specified primary key and join type.
+state: draft
+df_tags:
+- DataPreparation
+parameters:
+- param_name: df1_key
+  df_param_type: column
+  display_name: Primary Key-1
+  description: Primary Key Of First Source Data
+  default_value: User ID
+  user_input_required: true
+- param_name: df2_key
+  df_param_type: column
+  display_name: Primary Key-2
+  description: Primary Key Of Second Source Data
+  default_value: user
+  user_input_required: true
+- param_name: join_type
+  df_param_type: string
+  display_name: Type Of Join
+  description: Type Of Join User Wants To Use
+  default_value: left
+  single_select_options:
+  - left
+  - right
+  - inner
+  - outer
+  - cross
+  user_input_required: true
+- param_name: df1
+  df_param_type: table
+  display_name: Source Data-1
+  description: First Source Data User Wants To Merge
+  user_input_required: true
+- param_name: df2
+  df_param_type: table
+  display_name: Source Data-2
+  description: Second Source Data User Wants To Merge
+  user_input_required: true
+source_type: python
