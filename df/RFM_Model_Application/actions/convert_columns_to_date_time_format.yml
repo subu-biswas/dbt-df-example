@@ -1,0 +1,15 @@
+unique_name: convert_columns_to_date_time_format
+action_reference: convert_columns_to_date_time_format
+display_name: convert_columns_to_date_time_format
+description: Action for converting columns of the dataframe to date-time format.
+state: draft
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: data
+  user_input_required: true
+- param_name: date_columns
+  df_param_type: column_names_list
+  display_name: date_columns
+  user_input_required: true
+source_type: python

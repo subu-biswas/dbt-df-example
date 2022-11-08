@@ -1,0 +1,23 @@
+unique_name: rfm_segmentation
+action_reference: rfm_segmentation
+display_name: rfm_segmentation
+description: Action for calculating the vanilla RFM segments based on RFM values.
+state: draft
+parameters:
+- param_name: recency_column
+  df_param_type: column
+  display_name: recency_column
+  user_input_required: true
+- param_name: frequency_column
+  df_param_type: column
+  display_name: frequency_column
+  user_input_required: true
+- param_name: monetary_value_column
+  df_param_type: column
+  display_name: monetary_value_column
+  user_input_required: true
+- param_name: rfm_table
+  df_param_type: table
+  display_name: rfm_table
+  user_input_required: true
+source_type: python

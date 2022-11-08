@@ -4,13 +4,13 @@ display_name: rfm_calculation
 description: Action for calculating Recency,Frequency,Monetary/Engagement values.
 state: draft
 parameters:
-- param_name: rfm_data
-  df_param_type: table
-  display_name: rfm_data
-  user_input_required: true
 - param_name: id_customer
   df_param_type: column_names_list
   display_name: id_customer
+  user_input_required: true
+- param_name: rfm_data
+  df_param_type: table
+  display_name: rfm_data
   user_input_required: true
 - param_name: ts_interaction
   df_param_type: column
