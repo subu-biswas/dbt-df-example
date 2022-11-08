@@ -1,0 +1,20 @@
+unique_name: dimension_reduction
+action_reference: dimension_reduction
+display_name: dimension_reduction
+description: Action for calculating first two principal component of the RFM table
+  and add the value of those component to a new dataframe.
+state: draft
+parameters:
+- param_name: segment_data
+  df_param_type: table
+  display_name: segment_data
+  user_input_required: true
+- param_name: customer_id_column
+  df_param_type: column
+  display_name: customer_id_column
+  user_input_required: true
+- param_name: segment_column
+  df_param_type: column
+  display_name: segment_column
+  user_input_required: true
+source_type: python

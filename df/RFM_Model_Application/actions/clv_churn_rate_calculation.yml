@@ -1,0 +1,40 @@
+unique_name: clv_churn_rate_calculation
+action_reference: clv_churn_rate_calculation
+display_name: clv_churn_rate_calculation
+description: Action for calculating CLV,Churn Rate,Expected Number of Purchase by
+  the Customer.
+state: draft
+parameters:
+- param_name: recency_column
+  df_param_type: column
+  display_name: recency_column
+  user_input_required: true
+- param_name: frequency_column
+  df_param_type: column
+  display_name: frequency_column
+  user_input_required: true
+- param_name: monetary_value_column
+  df_param_type: column
+  display_name: monetary_value_column
+  user_input_required: true
+- param_name: time_first_interaction
+  df_param_type: column
+  display_name: time_first_interaction
+  user_input_required: true
+- param_name: rfm_table
+  df_param_type: table
+  display_name: rfm_table
+  user_input_required: true
+- param_name: customer_id_column
+  df_param_type: column_names_list
+  display_name: customer_id_column
+  user_input_required: true
+- param_name: Period
+  df_param_type: int
+  display_name: Period
+  user_input_required: true
+- param_name: PenalizeCoefficient
+  df_param_type: float
+  display_name: PenalizeCoefficient
+  user_input_required: true
+source_type: python
