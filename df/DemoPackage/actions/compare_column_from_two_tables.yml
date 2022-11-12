@@ -1,0 +1,27 @@
+unique_name: compare_column_from_two_tables
+action_reference: compare_column_from_two_tables
+display_name: compare_column_from_two_tables
+description: compare_column_from_two_tables
+state: draft
+parameters:
+- param_name: table1
+  df_param_type: table
+  display_name: table1
+  description: table1
+  user_input_required: true
+- param_name: table2
+  df_param_type: table
+  display_name: table2
+  description: table2
+  user_input_required: true
+- param_name: primary_key
+  df_param_type: column
+  display_name: primary_key
+  description: primary_key
+  user_input_required: true
+- param_name: column_to_compare
+  df_param_type: column
+  display_name: column_to_compare
+  description: column_to_compare
+  user_input_required: true
+source_type: df_sql

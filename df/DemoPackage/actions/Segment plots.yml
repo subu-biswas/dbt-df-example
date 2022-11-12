@@ -1,0 +1,35 @@
+unique_name: Segment plots
+action_reference: Segment plots
+charts:
+- name: revenue per referrer
+  kind: segment
+  options:
+    x: '{column_x}'
+    y: '{column_y}'
+    segments: '{segment_column}'
+  expose_data: false
+display_name: Segment plots
+description: Segment plots
+state: draft
+parameters:
+- param_name: column_x
+  df_param_type: column
+  display_name: column_x
+  description: ''
+  user_input_required: true
+- param_name: column_y
+  df_param_type: column
+  display_name: column_y
+  description: ''
+  user_input_required: true
+- param_name: table1
+  df_param_type: table
+  display_name: table1
+  description: Table
+  user_input_required: true
+- param_name: segment_column
+  df_param_type: column
+  display_name: segment_column
+  description: ''
+  user_input_required: true
+source_type: df_sql
