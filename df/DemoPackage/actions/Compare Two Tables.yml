@@ -1,0 +1,27 @@
+unique_name: Compare Two Tables
+action_reference: Compare Two Tables
+display_name: Compare Two Tables
+description: Compare Two Tables
+state: draft
+parameters:
+- param_name: table2
+  df_param_type: table
+  display_name: table2
+  description: ''
+  user_input_required: true
+- param_name: primary_key
+  df_param_type: column
+  display_name: primary_key
+  description: ''
+  user_input_required: true
+- param_name: column_to_compare
+  df_param_type: column
+  display_name: column_to_compare
+  description: ''
+  user_input_required: true
+- param_name: table1
+  df_param_type: table
+  display_name: table1
+  description: First Table
+  user_input_required: true
+source_type: df_sql
