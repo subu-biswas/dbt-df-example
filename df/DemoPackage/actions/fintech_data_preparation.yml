@@ -1,0 +1,12 @@
+unique_name: fintech_data_preparation
+action_reference: fintech_data_preparation
+display_name: Fintech Data Preparation
+description: Fintech Data Preparation
+state: draft
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: data
+  description: Target Table
+  user_input_required: true
+source_type: python

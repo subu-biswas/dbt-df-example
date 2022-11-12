@@ -1,0 +1,50 @@
+unique_name: propensity_calculation_cohort_building
+action_reference: propensity_calculation_cohort_building
+display_name: Propensity Calculation Cohort Building
+description: Propensity Calculation Cohort Building
+state: draft
+parameters:
+- param_name: source_data
+  df_param_type: table
+  display_name: source_data
+  description: source_data
+  user_input_required: true
+- param_name: transformed_data
+  df_param_type: table
+  display_name: transformed_data
+  description: transformed_data
+  user_input_required: true
+- param_name: target_column
+  df_param_type: column
+  display_name: target_column
+  description: target_column
+  default_value: enrolled
+  user_input_required: true
+- param_name: CustomerID
+  df_param_type: column
+  display_name: CustomerID
+  description: CustomerID
+  default_value: user
+  user_input_required: true
+- param_name: propensity_lower_limit
+  df_param_type: string
+  display_name: propensity_lower_limit
+  description: propensity_lower_limit
+  user_input_required: true
+- param_name: propensity_upper_limit
+  df_param_type: string
+  display_name: propensity_upper_limit
+  description: propensity_upper_limit
+  user_input_required: true
+- param_name: method
+  df_param_type: string
+  display_name: method
+  description: method
+  default_value: XGBoost Classifier
+  single_select_options:
+  - Decision Tree Classifier
+  - Logistic Regression
+  - Random Forest Classifier
+  - XGBoost Classifier
+  user_input_required: true
+source_type: python
