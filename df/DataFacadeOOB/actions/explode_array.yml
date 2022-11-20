@@ -1,0 +1,21 @@
+unique_name: explode_array
+action_reference: explode_array
+display_name: explode_array
+description: Action to expand the values of the array into separate output rows. Only
+  works on columns tagged as list/array.
+state: draft
+df_tags:
+- DataPreparation
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of  columns (with vector/list values) which you want to expand
+    into separate rows
+  user_input_required: true
+source_type: python

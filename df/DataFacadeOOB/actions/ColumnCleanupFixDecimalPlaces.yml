@@ -1,0 +1,20 @@
+unique_name: ColumnCleanupFixDecimalPlaces
+action_reference: ColumnCleanupFixDecimalPlaces
+display_name: ColumnCleanupFixDecimalPlaces
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  user_input_required: true
+- param_name: column_names
+  df_param_type: column_names_list
+  display_name: column_names
+  df_tags:
+  - Floating
+  user_input_required: true
+- param_name: digits_after_decimal
+  df_param_type: int
+  display_name: digits_after_decimal
+  user_input_required: true
+source_type: python

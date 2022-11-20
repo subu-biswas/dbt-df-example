@@ -1,0 +1,14 @@
+unique_name: TableCleanupDropColumn
+action_reference: TableCleanupDropColumn
+display_name: TableCleanupDropColumn
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  user_input_required: true
+- param_name: column_to_remove_name
+  df_param_type: column
+  display_name: column_to_remove_name
+  user_input_required: true
+source_type: python

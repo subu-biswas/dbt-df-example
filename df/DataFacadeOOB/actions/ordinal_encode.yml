@@ -1,0 +1,20 @@
+unique_name: ordinal_encode
+action_reference: ordinal_encode
+display_name: ordinal_encode
+description: Action to encode categories into an integer between 0 and the total number
+  of categories in the Input column.
+state: draft
+df_tags:
+- EncodeCategorical
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column names on which you want apply ordinal encoding
+  user_input_required: true
+source_type: python

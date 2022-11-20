@@ -1,0 +1,22 @@
+unique_name: drop_column_with_null
+action_reference: drop_column_with_null
+display_name: drop_column_with_null
+description: 'Action to drop columns that have missing values. '
+state: draft
+df_tags:
+- DataTransform
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  df_tags:
+  - TableContainsNullValues
+  user_input_required: true
+- param_name: null_percentage
+  df_param_type: float
+  display_name: Threshold Null Percentage
+  description: Drop columns if null percentage is greater than this value
+  default_value: '90.0'
+  user_input_required: true
+source_type: python

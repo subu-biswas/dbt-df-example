@@ -1,0 +1,24 @@
+unique_name: write_table_to_googlesheets
+action_reference: write_table_to_googlesheets
+display_name: write_table_to_googlesheets
+description: Action to push dataframe to google sheets.
+state: draft
+df_tags:
+- DataPreparation
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: Source Data
+  description: Source Data User Wants To Push To Google Sheets
+  user_input_required: true
+- param_name: spreadsheet_id
+  df_param_type: string
+  display_name: Type Your Google Spreed Sheet ID
+  description: User Need To Provide The Google Spreed Sheet ID
+  user_input_required: true
+- param_name: sheet_name
+  df_param_type: string
+  display_name: 'Type Your Sheet Name '
+  description: User Need To Provide The Sheet Name Of The Google Spreed Sheet
+  user_input_required: true
+source_type: python

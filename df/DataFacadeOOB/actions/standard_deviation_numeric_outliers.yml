@@ -1,0 +1,42 @@
+unique_name: standard_deviation_numeric_outliers
+action_reference: standard_deviation_numeric_outliers
+display_name: standard_deviation_numeric_outliers
+description: Action to detects and fixes outliers in numeric features using the mean
+  and standard deviation.
+state: draft
+df_tags:
+- HandleOutliers
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column names for which you want to apply this outlier handling
+    action
+  df_tags:
+  - Floating
+  user_input_required: true
+- param_name: number_of_sd
+  df_param_type: float
+  display_name: Specify Any Real Number
+  description: Please mention the number of standard deviations of which a value must
+    vary from the mean,i.e if you want a 3 standard deviation limit give input as
+    3
+  default_value: '1.0'
+  user_input_required: true
+- param_name: fix_method
+  df_param_type: string
+  display_name: Choose The Method
+  description: Please chose the method for handling outliers, clip means replace outliers
+    with threshold values, remove means drop the outliers from the data,invalidate
+    means replace the outliers with null
+  single_select_options:
+  - clip
+  - remove
+  - invalidate
+  user_input_required: true
+source_type: python

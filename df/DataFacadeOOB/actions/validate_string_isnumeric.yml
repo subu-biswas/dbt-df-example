@@ -1,0 +1,21 @@
+unique_name: validate_string_isnumeric
+action_reference: validate_string_isnumeric
+display_name: validate_string_isnumeric
+description: Action to create a new column that indicates (with an indicator) that
+  a row of text data is numeric. Works only on text data.
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string validation operation
+  user_input_required: true
+source_type: python

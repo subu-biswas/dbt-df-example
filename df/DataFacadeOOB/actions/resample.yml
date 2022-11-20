@@ -1,0 +1,68 @@
+unique_name: resample
+action_reference: resample
+display_name: resample
+description: Action to resample any timeseries data
+state: draft
+df_tags:
+- TimeSeries
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: frequency
+  df_param_type: string
+  display_name: Select Frequency Type
+  description: 'Please choose the frequency type of the time frame in which you want
+    to do the resample of the time series data '
+  single_select_options:
+  - Month
+  - Calendar Day
+  - Weekly
+  - Business Day
+  - Hourly
+  - Minutes
+  - Seconds
+  - Yearly
+  user_input_required: true
+- param_name: time_stamp_format
+  df_param_type: string
+  display_name: Select The Time Stamp Format
+  description: Please mention the time stamp format of the date-time column, use infer
+    if you want the action to infer the date time format from the data
+  single_select_options:
+  - Infer
+  - '%m/%d/%Y'
+  - '%m/%d/%y'
+  - '%d/%m/%Y'
+  - '%d/%m/%y'
+  - '%d-%m-%Y'
+  - '%d-%m-%y'
+  - '%m-%d-%Y'
+  - '%m-%d-%y'
+  - '%Y-%m-%d'
+  - '%Y-%m-%d %H:%M:%S'
+  - H:%M:%S
+  - '%B %Y'
+  - '%B: %Y'
+  - '%m-%d-%Y'
+  - '%d-%m-%Y %H:%M:%S'
+  user_input_required: true
+- param_name: period
+  df_param_type: int
+  display_name: Specify The Period
+  description: Please mention  the period of the frequency for example if you want
+    to resample with frequency of 3 months put input as 3
+  default_value: '1'
+  user_input_required: true
+- param_name: resample_method
+  df_param_type: string
+  display_name: Chose Resample Method
+  description: Pleas mention the resample method you want to apply on the time series,up-sample
+    means decreasing the time interval and down-sample means increasing the time interval
+  single_select_options:
+  - Up-sample
+  - Down-sample
+  user_input_required: true
+source_type: python

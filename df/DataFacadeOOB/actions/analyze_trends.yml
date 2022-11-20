@@ -1,0 +1,29 @@
+unique_name: analyze_trends
+action_reference: analyze_trends
+display_name: analyze_trends
+description: Analyzing trends
+state: draft
+df_tags:
+- DataTransform
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: data
+  user_input_required: true
+- param_name: dim_columns
+  df_param_type: column_names_list
+  display_name: dim_columns
+  user_input_required: true
+- param_name: target_col
+  df_param_type: column
+  display_name: target_col
+  user_input_required: true
+- param_name: agg_function
+  df_param_type: string
+  display_name: agg_function
+  user_input_required: true
+- param_name: filter_query
+  df_param_type: string
+  display_name: filter_query
+  user_input_required: true
+source_type: python

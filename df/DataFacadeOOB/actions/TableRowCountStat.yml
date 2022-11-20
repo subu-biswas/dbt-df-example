@@ -1,0 +1,11 @@
+unique_name: TableRowCountStat
+action_reference: TableRowCountStat
+display_name: TableRowCountStat
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  default_value: SELECT * from {table_name}
+  user_input_required: true
+source_type: python

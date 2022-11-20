@@ -1,0 +1,30 @@
+unique_name: find_and_replace_substring
+action_reference: find_and_replace_substring
+display_name: find_and_replace_substring
+description: Action to replace a substring matching the given regex with a new one
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string format operation
+  user_input_required: true
+- param_name: find_str
+  df_param_type: string
+  display_name: Specify The String Pattern
+  description: Please mention the string pattern in regular expression
+  user_input_required: true
+- param_name: replace_str
+  df_param_type: string
+  display_name: Specify the String
+  description: Please mention the string you want to replace
+  user_input_required: true
+source_type: python
