@@ -1,0 +1,35 @@
+unique_name: move_column_by_reference_column
+action_reference: move_column_by_reference_column
+display_name: move_column_by_reference_column
+description: Action to move a column's location in the dataset. Choose to move your
+  column  before or after a reference column.
+state: draft
+df_tags:
+- ManageColumns
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  user_input_required: true
+- param_name: column
+  df_param_type: column
+  display_name: Choose The Column
+  description: Please choose the column you want to move
+  user_input_required: true
+- param_name: reference_column
+  df_param_type: column
+  display_name: Choose The Reference Column
+  description: Please choose the reference  with respect to which you want to move
+    the mentioned column
+  user_input_required: true
+- param_name: position
+  df_param_type: string
+  display_name: Choose The Position
+  description: Please choose the position in which you want to move the column with
+    respect to the reference column
+  single_select_options:
+  - After
+  - Before
+  user_input_required: true
+source_type: python

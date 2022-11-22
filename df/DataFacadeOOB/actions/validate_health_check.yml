@@ -1,0 +1,16 @@
+unique_name: validate_health_check
+action_reference: validate_health_check
+display_name: validate_health_check
+description: Action to create a new column that indicates (with an indicator) that
+  a row of text data meets the specified length. Works only on text data.
+state: draft
+parameters:
+- param_name: health_stats_string
+  df_param_type: string
+  display_name: health_stats_string
+  user_input_required: true
+- param_name: threshold_health_percentage
+  df_param_type: float
+  display_name: threshold_health_percentage
+  user_input_required: true
+source_type: python

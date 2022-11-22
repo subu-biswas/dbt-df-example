@@ -1,0 +1,51 @@
+unique_name: replace_rare
+action_reference: replace_rare
+display_name: replace_rare
+description: You specify a threshold and system finds all values that meet that threshold
+  and replaces them with a string that you specify.
+state: draft
+df_tags:
+- HandleOutliers
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: column
+  df_param_type: column
+  display_name: Choose The Column
+  description: Name of the column (must be categorical column) for which you want
+    identify and handel rare values
+  user_input_required: true
+- param_name: threshold_type
+  df_param_type: string
+  display_name: Choose The Threshold Type
+  description: Please mention the threshold method to identify the rare values of
+    the mentioned column, absolute threshold means you specify the threshold frequency
+    of a category, if the frequency of that category is less than the threshold the
+    category will be replaced by some specified value, fraction threshold means you
+    specify the a fraction of the total frequency , if the frequency of any category
+    is less than that threshold the category will be replaced by some specified value,max
+    common categories means you specify the maximum number of categories for the mentioned
+    column
+  single_select_options:
+  - Absolute threshold
+  - Fraction threshold
+  - Max common categories
+  user_input_required: true
+- param_name: threshold_value
+  df_param_type: float
+  display_name: Specify The Threshold Value
+  description: Please specify the threshold value for the mentioned threshold type,use
+    integer value for absolute threshold and max common categories and decimal value
+    for fraction threshold
+  user_input_required: true
+- param_name: value
+  df_param_type: string
+  display_name: Specify The New Category Name
+  description: Please mention the category name under which the rare values of the
+    columns will come
+  default_value: Others
+  user_input_required: true
+source_type: python

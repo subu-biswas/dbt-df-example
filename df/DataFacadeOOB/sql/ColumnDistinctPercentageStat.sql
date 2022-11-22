@@ -1,0 +1,1 @@
+WITH total_count AS( SELECT count(1) as c_total FROM {table_name} ), distinct_count AS( SELECT COUNT(DISTINCT {column_name}) AS c_distinct FROM {table_name} ) SELECT (c_distinct*100/c_total) FROM total_count JOIN distinct_count ON 1=1

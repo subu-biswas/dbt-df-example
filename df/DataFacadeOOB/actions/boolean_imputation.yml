@@ -1,0 +1,35 @@
+unique_name: boolean_imputation
+action_reference: boolean_imputation
+display_name: boolean_imputation
+description: Impute boolean values (only applicable to boolean columns).
+state: draft
+df_tags:
+- DataCleanup
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  df_tags:
+  - TableContainsNullValues
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column names (must be boolean columns) for which you want missing
+    value imputations
+  df_tags:
+  - Boolean
+  user_input_required: true
+- param_name: imputation_method
+  df_param_type: string
+  display_name: Choose Imputation Method
+  description: Please specify the imputation method.Use Remove if you want to  remove
+    the missing values from the data.And useReplace if you want to impute the missing
+    values.
+  default_value: Remove
+  single_select_options:
+  - Remove
+  - Replace
+  user_input_required: true
+source_type: python

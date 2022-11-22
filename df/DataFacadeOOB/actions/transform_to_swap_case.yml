@@ -1,0 +1,21 @@
+unique_name: transform_to_swap_case
+action_reference: transform_to_swap_case
+display_name: transform_to_swap_case
+description: 'Converts all uppercase characters to lowercase and all lowercase characters
+  to upper case '
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string format operation
+  user_input_required: true
+source_type: python
