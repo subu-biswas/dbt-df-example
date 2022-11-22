@@ -1,0 +1,5 @@
+name: TimeSeriesForecast
+version: 0.1
+display_name: TimeSeriesForecast
+description: Calculates Time Series Forecasts for a dataset
+state: draft

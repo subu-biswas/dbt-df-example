@@ -1,0 +1,26 @@
+unique_name: FormTimeSeriesTable
+action_reference: FormTimeSeriesTable
+display_name: FormTimeSeriesTable
+description: Indexes the dataframe with timestamps for generating forecast
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  user_input_required: true
+- param_name: primary_dimension
+  df_param_type: column
+  display_name: primary_dimension
+  user_input_required: true
+- param_name: timestamp_columns
+  df_param_type: column_names_list
+  display_name: timestamp_columns
+  user_input_required: true
+- param_name: aggregate_by
+  df_param_type: string
+  display_name: aggregate_by
+  single_select_options:
+  - sum
+  - mean
+  user_input_required: true
+source_type: python

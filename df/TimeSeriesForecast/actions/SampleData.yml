@@ -1,0 +1,56 @@
+unique_name: SampleData
+action_reference: SampleData
+display_name: SampleData
+description: Action to resample any timeseries data
+state: draft
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: data
+  user_input_required: true
+- param_name: frequency
+  df_param_type: string
+  display_name: Frequency of Date Column
+  single_select_options:
+  - Month
+  - Calendar Day
+  - Weekly
+  - Business Day
+  - Hourly
+  - Minutes
+  - Seconds
+  - Yearly
+  user_input_required: true
+- param_name: period
+  df_param_type: int
+  display_name: period
+  user_input_required: true
+- param_name: time_stamp_format
+  df_param_type: string
+  display_name: time_stamp_format
+  single_select_options:
+  - Infer
+  - '%m/%d/%Y'
+  - '%m/%d/%y'
+  - '%d/%m/%Y'
+  - '%d/%m/%y'
+  - '%d-%m-%Y'
+  - '%d-%m-%y'
+  - '%m-%d-%Y'
+  - '%m-%d-%y'
+  - '%Y-%m-%d'
+  - '%Y-%m-%d %H:%M:%S'
+  - H:%M:%S
+  - '%B %Y'
+  - '%B: %Y'
+  - '%m-%d-%Y'
+  - '%d-%m-%Y %H:%M:%S'
+  user_input_required: true
+- param_name: resample_method
+  df_param_type: string
+  display_name: resample_method
+  single_select_options:
+  - Up-sample
+  - Down-sample
+  user_input_required: true
+source_type: python
