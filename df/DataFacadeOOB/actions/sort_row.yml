@@ -1,0 +1,26 @@
+unique_name: sort_row
+action_reference: sort_row
+display_name: sort_row
+description: Action to sort the entire dataframe by a given column.
+state: draft
+df_tags:
+- ManageRow
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: column
+  df_param_type: column
+  display_name: Choose The Column
+  description: Name of the column on which you want apply sorting
+  user_input_required: true
+- param_name: ascending
+  df_param_type: boolean
+  display_name: Do You Want Column IN Ascending Order
+  description: Specify if you want to sort the chosen column in ascending or descending
+    order, select true for ascending order and false for descending order
+  default_value: 'True'
+  user_input_required: true
+source_type: python

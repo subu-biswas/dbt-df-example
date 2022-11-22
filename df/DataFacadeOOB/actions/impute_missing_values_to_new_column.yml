@@ -1,0 +1,36 @@
+unique_name: impute_missing_values_to_new_column
+action_reference: impute_missing_values_to_new_column
+display_name: impute_missing_values_to_new_column
+description: Action to create a new column that contains imputed values where missing
+  values were found in input categorical and numerical data. Mean and Median algorithm
+  only works for numeric columns.
+state: draft
+df_tags:
+- HandleMissing
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  df_tags:
+  - TableContainsNullValues
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of columns on which you want missing value imputation
+  df_tags:
+  - Integer
+  - Floating
+  user_input_required: true
+- param_name: algorithm
+  df_param_type: string
+  display_name: Choose Imputation Algorithm or Method
+  description: Please specify the imputation method (for example imputation method
+    can be mean,median or mode)
+  single_select_options:
+  - mean
+  - median
+  - mode
+  user_input_required: true
+source_type: python

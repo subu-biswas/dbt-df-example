@@ -1,0 +1,34 @@
+unique_name: extract_between_delimiters
+action_reference: extract_between_delimiters
+display_name: extract_between_delimiters
+description: Extract substring between left and right delimiter into new column
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string format operation
+  user_input_required: true
+- param_name: left_delimiter
+  df_param_type: string
+  display_name: Specify The Left Delimiter
+  description: Left delimiter(like , ; etc) that you specify to be used in extracting
+    the substring
+  default_value: ' '
+  user_input_required: true
+- param_name: right_delimiter
+  df_param_type: string
+  display_name: Specify The Right Delimiter
+  description: Right delimiter(like , ; etc) that you specify to be used in extracting
+    the substring
+  default_value: ' '
+  user_input_required: true
+source_type: python

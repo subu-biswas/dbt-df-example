@@ -1,0 +1,1 @@
+SELECT CAST(AVG({column_name}) AS INT) FROM {table_name}

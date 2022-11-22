@@ -1,0 +1,27 @@
+unique_name: validate_string_length
+action_reference: validate_string_length
+display_name: validate_string_length
+description: Action to create a new column that indicates (with an indicator) that
+  a row of text data meets the specified length. Works only on text data.
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string validation operation
+  user_input_required: true
+- param_name: length
+  df_param_type: int
+  display_name: Please Specify The Length Of The String
+  description: Please mention the expected length of the string to validate the string
+  default_value: '10'
+  user_input_required: true
+source_type: python

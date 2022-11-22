@@ -1,0 +1,46 @@
+unique_name: quantile_numeric_outliers
+action_reference: quantile_numeric_outliers
+display_name: quantile_numeric_outliers
+description: Action to detect and fix outliers in numeric features using quantiles.
+state: draft
+df_tags:
+- HandleOutliers
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: column
+  df_param_type: column
+  display_name: Choose The Column
+  description: Name of the column for which you want identify and handel outliers
+  user_input_required: true
+- param_name: lower_quantile
+  df_param_type: int
+  display_name: Specify The Lower Quantile
+  description: Please mention the quantile value which will be used in identifying
+    the outliers, i.e. if any value is less than that quantile value of the column
+    values, it will be  identified as outlier
+  default_value: '25'
+  user_input_required: true
+- param_name: upper_quantile
+  df_param_type: int
+  display_name: Specify The Upper Quantile
+  description: Please mention the quantile value which will be used in identifying
+    the outliers, i.e. if any value is less than that quantile value of the column
+    values, it will be  identified as outlier
+  default_value: '75'
+  user_input_required: true
+- param_name: fix_method
+  df_param_type: string
+  display_name: Choose The Method
+  description: Please chose the method for handling outliers, clip means replace outliers
+    with threshold values, remove means drop the outliers from the data,invalidate
+    means replace the outliers with null
+  single_select_options:
+  - clip
+  - remove
+  - invalidate
+  user_input_required: true
+source_type: python

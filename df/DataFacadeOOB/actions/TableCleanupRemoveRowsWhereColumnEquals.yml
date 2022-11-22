@@ -1,0 +1,18 @@
+unique_name: TableCleanupRemoveRowsWhereColumnEquals
+action_reference: TableCleanupRemoveRowsWhereColumnEquals
+display_name: TableCleanupRemoveRowsWhereColumnEquals
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  user_input_required: true
+- param_name: column_name
+  df_param_type: column
+  display_name: column_name
+  user_input_required: true
+- param_name: column_value
+  df_param_type: string
+  display_name: column_value
+  user_input_required: true
+source_type: python

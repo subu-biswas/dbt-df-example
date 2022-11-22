@@ -1,0 +1,42 @@
+unique_name: find_and_replace_before_after_delimiter
+action_reference: find_and_replace_before_after_delimiter
+display_name: find_and_replace_before_after_delimiter
+description: Find substring before or after user specified delimiter and replace with
+  a new one
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string format operation
+  user_input_required: true
+- param_name: delimiter
+  df_param_type: string
+  display_name: Type The Specific Delimiter
+  description: Delimiter that you specify to be used in replacing substring
+  default_value: ','
+  user_input_required: true
+- param_name: position
+  df_param_type: string
+  display_name: Specify The Position Of The Substring
+  description: Please mention if the substring to be replaced before or after the
+    delimiter already entered
+  single_select_options:
+  - After
+  - Before
+  user_input_required: true
+- param_name: substring
+  df_param_type: string
+  display_name: Type The Substring
+  description: Please specify the substring to be added before or after the delimiters
+  default_value: Hello World
+  user_input_required: true
+source_type: python

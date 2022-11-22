@@ -1,0 +1,26 @@
+unique_name: extract_using_regex
+action_reference: extract_using_regex
+display_name: extract_using_regex
+description: Action to extract values based on regex into a new column
+state: draft
+df_tags:
+- FormatString
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column (must be of string data type) names on which you want
+    to apply this string format operation
+  user_input_required: true
+- param_name: expression
+  df_param_type: string
+  display_name: Type The Regular Expression
+  description: Regular expression that you specify to be used in extracting the substring
+  default_value: '[a-zA-z]'
+  user_input_required: true
+source_type: python

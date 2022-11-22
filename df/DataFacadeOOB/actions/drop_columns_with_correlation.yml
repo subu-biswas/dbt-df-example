@@ -1,0 +1,23 @@
+unique_name: drop_columns_with_correlation
+action_reference: drop_columns_with_correlation
+display_name: drop_columns_with_correlation
+description: Action to delete columns from data.
+state: draft
+df_tags:
+- ManageColumns
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  df_tags:
+  - TableContainsNullValues
+  user_input_required: true
+- param_name: threshold_correlation
+  df_param_type: float
+  display_name: Threshold Correlation
+  description: Drop columns if the correlation between two columns is greater than
+    this value
+  default_value: '95.0'
+  user_input_required: true
+source_type: python

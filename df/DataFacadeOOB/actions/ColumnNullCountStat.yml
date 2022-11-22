@@ -1,0 +1,21 @@
+unique_name: ColumnNullCountStat
+action_reference: ColumnNullCountStat
+display_name: ColumnNullCountStat
+state: draft
+df_tags:
+- OutOfBoxProfiling
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: df
+  default_value: SELECT * from {table_name}
+  user_input_required: true
+- param_name: col
+  df_param_type: column
+  display_name: col
+  df_tags:
+  - StringColumn
+  - IntegerColumn
+  - FloatColumn
+  user_input_required: true
+source_type: python

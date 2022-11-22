@@ -1,0 +1,44 @@
+unique_name: two_variable_single_axis_summary_plot
+action_reference: two_variable_single_axis_summary_plot
+display_name: two_variable_single_axis_summary_plot
+description: Action To Generate 2 Dimensional Single Axis Multiple Variable Summary
+  Plot.
+state: draft
+df_tags:
+- DataVisualization
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: data
+  user_input_required: true
+- param_name: axis
+  df_param_type: column
+  display_name: axis
+  user_input_required: true
+- param_name: legend
+  df_param_type: column
+  display_name: legend
+  user_input_required: true
+- param_name: value
+  df_param_type: column
+  display_name: value
+  user_input_required: true
+- param_name: sql_filter
+  df_param_type: string
+  display_name: sql_filter
+  default_value: optional
+  user_input_required: true
+- param_name: value_type
+  df_param_type: string
+  display_name: value_type
+  single_select_options:
+  - Count
+  - Count Percentage
+  - Unique Count
+  - Average
+  - Maximum
+  - Minimum
+  - Median
+  - Total
+  user_input_required: true
+source_type: python

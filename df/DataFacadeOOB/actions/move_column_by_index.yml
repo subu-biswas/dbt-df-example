@@ -1,0 +1,26 @@
+unique_name: move_column_by_index
+action_reference: move_column_by_index
+display_name: move_column_by_index
+description: Action to move a column's location in the dataset. Choose to move your
+  column to the start or end of the dataset,or to a specific index.
+state: draft
+df_tags:
+- ManageColumns
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  user_input_required: true
+- param_name: column
+  df_param_type: column
+  display_name: Choose The Column
+  description: Please choose the column you want to move
+  user_input_required: true
+- param_name: index
+  df_param_type: string
+  display_name: Specify The Reference Index
+  description: Please mention the reference index in which the column will be moved,
+    possible values are start,end or any integer less than total number of columns
+  user_input_required: true
+source_type: python

@@ -1,0 +1,25 @@
+unique_name: one_hot_encode
+action_reference: one_hot_encode
+display_name: one_hot_encode
+description: Action to encode categories as one-hot vectors.
+state: draft
+df_tags:
+- EncodeCategorical
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose the data table on which you want to apply this action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column names on which you want apply one-hot encoding
+  user_input_required: true
+- param_name: drop_columns
+  df_param_type: boolean
+  display_name: Do You Want To Drop The Original Columns
+  description: Please select True if you want to drop the original columns after encoding
+    else select False
+  user_input_required: true
+source_type: python

@@ -1,0 +1,1 @@
+WITH total_count AS( SELECT COUNT(1) AS c_total FROM {table_name} ), null_count AS( SELECT count(1) AS c_null FROM {table_name} WHERE {column_name} = NULL ) SELECT (c_null*100/c_total) FROM total_count JOIN null_count ON 1=1

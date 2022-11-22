@@ -1,0 +1,17 @@
+unique_name: missing_value_indicator_column
+action_reference: missing_value_indicator_column
+display_name: missing_value_indicator_column
+description: Action to create a new indicator column, which contains a boolean false
+  if a row contains a value, and true if a row contains a missing value.
+state: draft
+df_tags:
+- HandleMissing
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  df_tags:
+  - TableContainsNullValues
+  user_input_required: true
+source_type: python

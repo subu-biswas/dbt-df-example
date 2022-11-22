@@ -1,0 +1,19 @@
+unique_name: drop_columns
+action_reference: drop_columns
+display_name: drop_columns
+description: Action to delete columns from data.
+state: draft
+df_tags:
+- ManageColumns
+parameters:
+- param_name: data
+  df_param_type: table
+  display_name: Source Data Table
+  description: Choose The Data Table On Which You Want To Apply This Action
+  user_input_required: true
+- param_name: columns
+  df_param_type: column_names_list
+  display_name: Choose The Columns
+  description: List of column names which you want to drop from the source data
+  user_input_required: true
+source_type: python
