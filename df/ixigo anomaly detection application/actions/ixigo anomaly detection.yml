@@ -1,0 +1,37 @@
+unique_name: ixigo anomaly detection
+action_reference: ixigo anomaly detection
+display_name: ixigo anomaly detection
+state: draft
+parameters:
+- param_name: forecast_period
+  df_param_type: int
+  display_name: Time Window
+  description: Please specify the time window for which you want the alerts.
+  user_input_required: true
+- param_name: timestamp_column
+  df_param_type: column
+  display_name: Time-Stamp Column
+  description: Select the column which identifies the time-stamps of the table.
+  user_input_required: true
+- param_name: target_column
+  df_param_type: column
+  display_name: Target Metric Column
+  description: Select the column of which the change in value should trigger the alert.
+  user_input_required: true
+- param_name: threshold_percentage
+  df_param_type: float
+  display_name: Threshold % Change
+  description: A threshold on the percentage change of the target metric.
+  user_input_required: true
+- param_name: '
+
+    covariate_columns'
+  df_param_type: column_names_list
+  display_name: Covariate Columns
+  description: Select the related columns to the target metric.
+  user_input_required: true
+- param_name: df
+  df_param_type: table
+  display_name: Table
+  user_input_required: true
+source_type: python
