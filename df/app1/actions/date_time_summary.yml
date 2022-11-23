@@ -1,0 +1,24 @@
+unique_name: date_time_summary
+source_type: "python"
+action_reference: "src/date_time_summary"
+display_name: "Date Time Summary"
+parameters:
+  - param_name: 'data'
+    df_param_type: table
+    display_name: "Target Table"
+  - param_name: 'date_time_axis'
+    df_param_type: column
+    display_name: "Date Time Column"
+    df_tags: ["Date", "DateTime"]
+  - param_name: 'value'
+    df_param_type: column
+    display_name: "Target Column"
+  - param_name: 'sql_filter'
+    df_param_type: string
+  - param_name: 'date_time_frequency'
+    df_param_type: string
+    single_select_options: ["Business Days","Calendar Days","Hours","Minutes","Months","Seconds","Weeks","Years"]
+  - param_name: 'value_type'
+    display_name: "Aggregation Type"
+    df_param_type: "string"
+    single_select_options: ["Count","Count Percentage","Unique Count","Average","Maximum","Minimum","Median","Total"]

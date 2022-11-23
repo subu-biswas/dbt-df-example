@@ -1,0 +1,22 @@
+unique_name: "Segment plots"
+action_reference: three_columns
+charts: 
+  - kind: 'segment'
+    name: 'revenue per referrer'
+    options:
+      x: "{column_x}"
+      y: "{column_y}"
+      segments: "{segment_column}"
+parameters:
+  - param_name: "table1"
+    df_param_type: table
+    display_name: "Table"
+  - param_name: "column_x"
+    df_param_type: column
+    description: ""
+  - param_name: "column_y"
+    df_param_type: column
+    description: ""
+  - param_name: "segment_column"
+    df_param_type: column
+    description: ""

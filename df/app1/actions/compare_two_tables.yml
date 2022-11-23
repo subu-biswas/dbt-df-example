@@ -1,0 +1,20 @@
+unique_name: "Compare Two Tables"
+display_name: "Compare Two Tables"
+action_reference: compare_column_from_two_tables
+parameters:
+  - param_name: "table1"
+    df_param_type: table
+    display_name: "First Table"
+    description: "First Table"
+  - param_name: "table2"
+    df_param_type: table
+    display_name: "Second Table"
+    description: ""
+  - param_name: "primary_key"
+    df_param_type: column
+    description: ""
+    display_name: "Primary Key of First Table"
+  - param_name: "column_to_compare"
+    df_param_type: column
+    description: ""
+    display_name: "Column to compare"
