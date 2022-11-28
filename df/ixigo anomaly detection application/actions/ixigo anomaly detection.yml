@@ -28,9 +28,7 @@ parameters:
   display_name: Target Metric Column
   description: Select the column of which the change in value should trigger the alert.
   user_input_required: true
-- param_name: '
-
-    threshold_percentage'
+- param_name: 'threshold_percentage'
   df_param_type: int
   display_name: Threshold % Change
   description: A threshold on the percentage change of the target metric.
