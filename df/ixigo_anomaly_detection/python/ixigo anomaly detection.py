@@ -13,8 +13,9 @@ import matplotlib.pyplot as plt
 
 class ExecutionHandler(BaseExecutionHandler):
 
-    def execute(self, df: pd.DataFrame, observation_period: int, forecast_period: int, timestamp_column, target_column, threshold_percentage, covariate_columns=[]):
-    
+    def execute(self, df: pd.DataFrame, observation_period: int, forecast_period: int, timestamp_column, target_column, threshold_percentage, email, covariate_columns=[]):
+        file_paths = []
+        images_paths = []
         if covariate_columns[0] not in df.columns:
             covariate_columns.clear()
         else:
@@ -122,9 +123,13 @@ class ExecutionHandler(BaseExecutionHandler):
                -observation_period:]) > 0:
             print('Real Time Value Significantly Deviating From Trend Values')
             fig = trimmed_df[['Actual Values', 'Trend Values']][-30:].plot(marker='.', figsize=(12, 8))
-            fig.get_figure().savefig("trend_output.jpg", bbox_inches="tight",
+            fig.get_figure().savefig("/tmp/trend_output.jpg", bbox_inches="tight",
                                      pad_inches=0.1, transparent=True)
+            images_paths.append("/tmp/trend_output.jpg")                                     
             trimmed_df = trimmed_df[-100:]
+            trimmed_df.to_csv("/tmp/trimmed_df.csv")
+            file_paths.append("/tmp/trimmed_df.csv")
+            df_helper.send_email(email, "Ixigo Anomaly Detection", "Real Time Value Significantly Deviating From Trend Values", images_paths, file_paths)
 
         else:
             pass
@@ -134,6 +139,8 @@ class ExecutionHandler(BaseExecutionHandler):
         if sum(abs(forecast - target_value) / 100 > threshold_percentage / 100) > 0:
 
             print('The Value Reached The Threshold')
+            file_paths = []
+            images_paths = []
 
             #  time_stamp = pd.date_range(start=start_date, periods=ts_length+forecast_period, freq=frequency_type)
 
@@ -153,21 +160,28 @@ class ExecutionHandler(BaseExecutionHandler):
             plt.axhline(target_value - (target_value * threshold_percentage / 100), color='orange', linestyle='--')
             # plt.show()
             plt.legend()
-            plt.savefig("output.jpg", bbox_inches="tight",
+            plt.savefig("/tmp/output.jpg", bbox_inches="tight",
                         pad_inches=0.1, transparent=True)
+            images_paths.append("/tmp/output.jpg");
+            
+            # ----Generating Output df
+            timeseries = timeseries + list(forecast)
+            is_forecast = [False] * 100 + [True] * forecast_period
+            is_significant = [np.nan] * 100 + list(abs(forecast - target_value) / 100 > threshold_percentage / 100)
+            output_df = pd.DataFrame()
+            output_df['Values'] = timeseries
+            output_df['Is Forecasted'] = is_forecast
+            output_df['Is Significant (Threshold Is ' + str(threshold_percentage) + '%)'] = is_significant
+            output_df = output_df.reset_index()
+            output_df.to_csv("/tmp/output_df.csv")
+            
+            file_paths.append("/tmp/output_df.csv")
+            df_helper.send_email(email, "Ixigo Anomaly Detection", "The Value Reached The Threshold", images_paths, file_paths)
 
         else:
 
             pass
-
-        # ----Generating Output df
-        timeseries = timeseries + list(forecast)
-        is_forecast = [False] * 100 + [True] * forecast_period
-        is_significant = [np.nan] * 100 + list(abs(forecast - target_value) / 100 > threshold_percentage / 100)
-        output_df = pd.DataFrame()
-        output_df['Values'] = timeseries
-        output_df['Is Forecasted'] = is_forecast
-        output_df['Is Significant (Threshold Is ' + str(threshold_percentage) + '%)'] = is_significant
-        output_df = output_df.reset_index()
-
-        return trimmed_df
+ 
+        
+        
+        return output_df
