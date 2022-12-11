@@ -1,6 +1,7 @@
 unique_name: anomaly detection
 action_reference: anomaly detection
 display_name: anomaly detection
+description: anomaly detection
 state: draft
 parameters:
 - param_name: timestamp_column
@@ -11,6 +12,7 @@ parameters:
 - param_name: df
   df_param_type: table
   display_name: Table
+  description: Table
   user_input_required: true
 - param_name: observation_period
   df_param_type: int
