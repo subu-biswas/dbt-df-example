@@ -1,40 +1,37 @@
-unique_name: ixigo anomaly detection
-action_reference: ixigo anomaly detection
-display_name: ixigo anomaly detection
-description: ixigo anomaly detection
+unique_name: anomaly detection
+action_reference: anomaly detection
+display_name: anomaly detection
 state: draft
 parameters:
+- param_name: df
+  df_param_type: table
+  display_name: Table
+  user_input_required: true
 - param_name: observation_period
   df_param_type: int
-  display_name: observation_period
+  display_name: Observation Window
   description: Please specify the time window for which you want the alerts if any
     anomaly detected in real time.
   user_input_required: true
 - param_name: forecast_period
   df_param_type: int
-  display_name: forecast_period
+  display_name: Time Window
   description: Please specify the time window for which you want the alerts.
-  user_input_required: true
-- param_name: df
-  df_param_type: table
-  display_name: df
-  description: Table
   user_input_required: true
 - param_name: timestamp_column
   df_param_type: column
-  display_name: timestamp_column
+  display_name: Timestamp Column
   description: Select the column which identifies the time-stamps of the table.
   user_input_required: true
-- param_name: target_column
-  df_param_type: column
-  display_name: target_column
-  description: Select the column of which the change in value should trigger the alert.
-  user_input_required: true
-- param_name: threshold_percentage
+- param_name: '
+
+    threshold_percentage'
   df_param_type: int
-  display_name: threshold_percentage
-  description: ' A threshold on the percentage change of the target metric.'
+  display_name: Threshold % Change
+  description: A threshold on the percentage change of the target metric.
   single_select_options:
+  - '2'
+  - '3'
   - '5'
   - '10'
   - '15'
@@ -43,20 +40,18 @@ parameters:
   - '30'
   - '35'
   - '40'
-  - '45'
-  - '50'
-  - '55'
-  - '60'
   user_input_required: true
 - param_name: email
   df_param_type: string
-  display_name: email
-  description: email
+  display_name: Emails
+  description: Enter the emails to get alerts.
   default_value: rupam.basu@data-facade.com
   user_input_required: true
-- param_name: covariate_columns
+- param_name: '
+
+    timeseries_columns'
   df_param_type: column_names_list
-  display_name: covariate_columns
-  description: covariate_columns
+  display_name: Target Metrics
+  description: Please select the target metrics for which you want alerts.
   user_input_required: true
 source_type: python
