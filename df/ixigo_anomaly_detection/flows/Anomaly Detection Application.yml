@@ -37,22 +37,27 @@ parameters:
 - param_name: Dimension
   df_param_type: column
   display_name: Dimension
+  description: Dimension
   user_input_required: true
 - param_name: Table
   df_param_type: table
   display_name: Table
+  description: Table
   user_input_required: true
 - param_name: Enter the KPIs
   df_param_type: column
   display_name: Enter the KPIs
+  description: Enter the KPIs
   user_input_required: true
 - param_name: Time Stamp Column
   df_param_type: column
   display_name: Time Stamp Column
+  description: Time Stamp Column
   user_input_required: true
 - param_name: Threshold % Change
   df_param_type: int
   display_name: Threshold % Change
+  description: Threshold % Change
   single_select_options:
   - '2'
   - '3'
