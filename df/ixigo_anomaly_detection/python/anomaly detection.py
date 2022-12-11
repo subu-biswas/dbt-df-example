@@ -1,5 +1,5 @@
 import numpy as np
-import keras
+#import keras
 from dft import df_plot
 from dft.base_execution_handler import BaseExecutionHandler
 from prophet import Prophet
@@ -24,9 +24,7 @@ class ExecutionHandler(BaseExecutionHandler):
             'Yearly': 'Y'
         }
 
-    def execute(self, df: pd.DataFrame, observation_period: int, forecast_period: int, timestamp_column,
-                timeseries_columns,
-                threshold_percentage, email):
+    def execute(self, df: pd.DataFrame, observation_period: int, forecast_period: int, timestamp_column, timeseries_columns, threshold_percentage, email):
         forecast_list = []
 
         frequency_type = pd.infer_freq(df[timestamp_column])
