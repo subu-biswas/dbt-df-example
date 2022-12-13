@@ -39,6 +39,7 @@ parameters:
 - param_name: rows
   df_param_type: column
   display_name: Rows
+  description: Rows
   user_input_required: true
 - param_name: values
   df_param_type: column
