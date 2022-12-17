@@ -14,45 +14,74 @@ flow_actions:
     global_parameter: Enter the KPIs
   - param_name: data
     global_parameter: Table
-  display_name: create_pivot_table_with_datetime_rows
+  display_name: Transforming table
   stage_name: Stage 1
-- action_reference: anomaly detection modified
+- action_reference: Real Time Anomaly Detection
   parameters:
   - param_name: timestamp_column
     global_parameter: Time Stamp Column
-  - param_name: forecast_period
-    default_value: '4'
-  - param_name: observation_period
-    default_value: '7'
   - param_name: email
+    global_parameter: Emails
     default_value: rupam.basu@data-facade.com
   - param_name: df
     source_action: create_pivot_table_with_datetime_rows-0
+  - param_name: dimension_column
+    global_parameter: Dimension
+  - param_name: observation_period
+    global_parameter: Observation Window
   - param_name: threshold_percentage
     global_parameter: Threshold % Change
-  display_name: anomaly detection modified
+  display_name: Detecting Real Time Anomaly
+  stage_name: Stage 1
+- action_reference: Anomaly Forecast
+  parameters:
+  - param_name: df
+    source_action: create_pivot_table_with_datetime_rows-0
+  - param_name: dimension_column
+    global_parameter: Dimension
+  - param_name: threshold_percentage
+    global_parameter: Threshold % Change
+  - param_name: email
+    global_parameter: Emails
+    default_value: rupam.basu@data-facade.com
+  - param_name: timestamp_column
+    global_parameter: Time Stamp Column
+  - param_name: forecast_period
+    global_parameter: Forecast Window
+  display_name: Forecasting Anomaly
   stage_name: Stage 1
 display_name: Anomaly Detection Application
 parameters:
-- param_name: Sql Filter
-  df_param_type: string
-  display_name: Sql Filter
-  user_input_required: true
-- param_name: Dimension
-  df_param_type: column
-  display_name: Dimension
-  user_input_required: true
-- param_name: Time Stamp Column
-  df_param_type: column
-  display_name: Time Stamp Column
-  user_input_required: true
-- param_name: Table
-  df_param_type: table
-  display_name: Table
+- param_name: Forecast Window
+  df_param_type: int
+  display_name: Forecast Window
+  default_value: '2'
+  single_select_options:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
   user_input_required: true
 - param_name: Enter the KPIs
   df_param_type: column
   display_name: Enter the KPIs
+  user_input_required: true
+- param_name: Emails
+  df_param_type: string
+  display_name: Emails
+  default_value: rupam.basu@data-facade.com
+  user_input_required: true
+- param_name: Sql Filter
+  df_param_type: string
+  display_name: Sql Filter
+  default_value: Optional
+  user_input_required: true
+- param_name: Dimension
+  df_param_type: column
+  display_name: Dimension
   user_input_required: true
 - param_name: Threshold % Change
   df_param_type: int
@@ -67,5 +96,27 @@ parameters:
   - '25'
   - '30'
   - '35'
+  - '40'
+  user_input_required: true
+- param_name: Observation Window
+  df_param_type: int
+  display_name: Observation Window
+  default_value: '7'
+  single_select_options:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  user_input_required: true
+- param_name: Time Stamp Column
+  df_param_type: column
+  display_name: Time Stamp Column
+  user_input_required: true
+- param_name: Table
+  df_param_type: table
+  display_name: Table
   user_input_required: true
 description: ''
