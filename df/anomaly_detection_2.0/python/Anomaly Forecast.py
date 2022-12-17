@@ -48,6 +48,7 @@ class ExecutionHandler(BaseExecutionHandler):
         images_paths = []
         tmp_df = pd.DataFrame()
         alert_count = 0
+        alert_list =[]
         for primary_dimension_value in primary_dimension_values:
             file_paths = []
             images_paths = []
@@ -89,13 +90,14 @@ class ExecutionHandler(BaseExecutionHandler):
                 
 
                 print('The Value Reached The Threshold')
+                alert_list = alert_list + [primary_dimension_value]
 
                 # plot the full timeseries
                 plt.figure(figsize=(8, 4))
                 plt.plot(time_series[-30:], '.-b', label='Actual Values')
 
                 # plotting the anomaly
-                plt.plot(forecast, 'rx--', linewidth=2, markersize=10,
+                plt.plot(time_series[-1:].append(forecast), 'rx--', linewidth=2, markersize=10,
                          label='Forecasted Values')
 
                 # adding the threshold value
@@ -119,10 +121,6 @@ class ExecutionHandler(BaseExecutionHandler):
 
                 tmp_df = tmp_df.append(output_df)
                 alert_count = alert_count + 1
-                # 
-
-                # 
-                # 
 
             else:
 
@@ -146,8 +144,13 @@ class ExecutionHandler(BaseExecutionHandler):
 
           tmp_df.reset_index().to_csv("/tmp/output_df.csv")
           file_paths.append("/tmp/output_df.csv")
-          df_helper.send_email(email, "Ixigo Anomaly Detection", "The Value Reached The Threshold", images_paths,
-                               file_paths)
+          string = 'Anomaly forecasted for the following ' + dimension_column + '\n'
+          for i,j in zip(range(1,len(alert_list)+1), alert_list):
+              string = string+ str(i)+ '. '+ j+ '\n' 
+
+          df_helper.send_email(email, "Ixigo Anomaly\
+                                       Detection (Forecast) ", string, images_paths,
+                                       file_paths)
 
         else:
           tmp_df ='No anomaly detected'

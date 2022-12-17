@@ -55,6 +55,7 @@ parameters:
 - param_name: Forecast Window
   df_param_type: int
   display_name: Forecast Window
+  description: Forecast Window
   default_value: '2'
   single_select_options:
   - '1'
@@ -68,24 +69,29 @@ parameters:
 - param_name: Enter the KPIs
   df_param_type: column
   display_name: Enter the KPIs
-  user_input_required: true
-- param_name: Emails
-  df_param_type: string
-  display_name: Emails
-  default_value: rupam.basu@data-facade.com
+  description: Enter the KPIs
   user_input_required: true
 - param_name: Sql Filter
   df_param_type: string
   display_name: Sql Filter
+  description: Sql Filter
   default_value: Optional
+  user_input_required: true
+- param_name: Emails
+  df_param_type: string
+  display_name: Emails
+  description: Emails
+  default_value: rupam.basu@data-facade.com
   user_input_required: true
 - param_name: Dimension
   df_param_type: column
   display_name: Dimension
+  description: Dimension
   user_input_required: true
 - param_name: Threshold % Change
   df_param_type: int
   display_name: Threshold % Change
+  description: Threshold % Change
   single_select_options:
   - '2'
   - '3'
@@ -101,6 +107,7 @@ parameters:
 - param_name: Observation Window
   df_param_type: int
   display_name: Observation Window
+  description: Observation Window
   default_value: '7'
   single_select_options:
   - '1'
@@ -114,9 +121,11 @@ parameters:
 - param_name: Time Stamp Column
   df_param_type: column
   display_name: Time Stamp Column
+  description: Time Stamp Column
   user_input_required: true
 - param_name: Table
   df_param_type: table
   display_name: Table
+  description: Table
   user_input_required: true
 description: ''
