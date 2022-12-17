@@ -95,7 +95,7 @@ class ExecutionHandler(BaseExecutionHandler):
                 plt.plot(time_series[-30:], '.-b', label='Actual Values')
 
                 # plotting the anomaly
-                plt.plot(forecast, 'rx--', linewidth=2, markersize=10,
+                plt.plot(time_series[-1:].append(forecast), 'rx--', linewidth=2, markersize=10,
                          label='Forecasted Values')
 
                 # adding the threshold value
@@ -119,10 +119,6 @@ class ExecutionHandler(BaseExecutionHandler):
 
                 tmp_df = tmp_df.append(output_df)
                 alert_count = alert_count + 1
-                # 
-
-                # 
-                # 
 
             else:
 
@@ -146,8 +142,10 @@ class ExecutionHandler(BaseExecutionHandler):
 
           tmp_df.reset_index().to_csv("/tmp/output_df.csv")
           file_paths.append("/tmp/output_df.csv")
-          df_helper.send_email(email, "Ixigo Anomaly Detection", "The Value Reached The Threshold", images_paths,
-                               file_paths)
+          df_helper.send_email(email, "Ixigo Anomaly\
+                                       Detection (Forecast) ", "The Value Reached\
+                                        The Threshold", images_paths,
+                                       file_paths)
 
         else:
           tmp_df ='No anomaly detected'

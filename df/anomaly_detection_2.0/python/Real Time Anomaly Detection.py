@@ -97,7 +97,7 @@ class ExecutionHandler(BaseExecutionHandler):
           images_paths.append("/tmp/trend_output.png")
           output_df.reset_index().to_csv("/tmp/actual_vs_trend.csv")
           file_paths.append("/tmp/actual_vs_trend.csv")
-          df_helper.send_email(email, "Ixigo Anomaly Detection",
+          df_helper.send_email(email, "Ixigo Anomaly Detection: Trend vs RealTime",
                                "Real Time Value Significantly Deviating From Trend Values", images_paths,file_paths)
 
         else:

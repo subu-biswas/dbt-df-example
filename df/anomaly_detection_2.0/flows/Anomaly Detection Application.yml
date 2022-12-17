@@ -69,15 +69,15 @@ parameters:
   df_param_type: column
   display_name: Enter the KPIs
   user_input_required: true
-- param_name: Emails
-  df_param_type: string
-  display_name: Emails
-  default_value: rupam.basu@data-facade.com
-  user_input_required: true
 - param_name: Sql Filter
   df_param_type: string
   display_name: Sql Filter
   default_value: Optional
+  user_input_required: true
+- param_name: Emails
+  df_param_type: string
+  display_name: Emails
+  default_value: rupam.basu@data-facade.com
   user_input_required: true
 - param_name: Dimension
   df_param_type: column
