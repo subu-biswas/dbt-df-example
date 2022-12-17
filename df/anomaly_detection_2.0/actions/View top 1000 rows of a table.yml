@@ -1,10 +1,12 @@
 unique_name: View top 1000 rows of a table
 action_reference: View top 1000 rows of a table
 display_name: View top 1000 rows of a table
+description: View top 1000 rows of a table
 state: draft
 parameters:
 - param_name: table
   df_param_type: table
   display_name: Enter table name
+  description: Enter table name
   user_input_required: true
 source_type: df_sql

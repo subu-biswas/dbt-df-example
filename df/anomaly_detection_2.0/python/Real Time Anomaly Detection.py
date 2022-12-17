@@ -46,6 +46,7 @@ class ExecutionHandler(BaseExecutionHandler):
         alert_count = 0
         file_paths = []
         images_paths = []
+        alert_list = []
         for primary_dimension_value in primary_dimension_values:
             
             print("Executing " + primary_dimension_value)
@@ -75,6 +76,7 @@ class ExecutionHandler(BaseExecutionHandler):
                    -observation_period:]) > 0:
                 print('Real Time Value Significantly Deviating From Trend Values')
                 #fig, ax = plt.subplots()
+                alert_list = alert_list + [primary_dimension_value]
                 figure = tmp_df[['Actual Values' ,
                                  'Trend Values']][-min(30, len(time_series)):].plot(
                     marker='.', figsize=(8, 4), title = 'Actual Values VS Trend Values Of '+dimension_column+' '+ primary_dimension_value)
@@ -97,8 +99,11 @@ class ExecutionHandler(BaseExecutionHandler):
           images_paths.append("/tmp/trend_output.png")
           output_df.reset_index().to_csv("/tmp/actual_vs_trend.csv")
           file_paths.append("/tmp/actual_vs_trend.csv")
+          string = 'Anomaly detected in real time for the following ' + dimension_column + '\n'
+          for i,j in zip(range(1,len(alert_list)+1), alert_list):
+              string = string+ str(i)+ '. '+ j+ '\n' 
           df_helper.send_email(email, "Ixigo Anomaly Detection: Trend vs RealTime",
-                               "Real Time Value Significantly Deviating From Trend Values", images_paths,file_paths)
+                               string, images_paths,file_paths)
 
         else:
           output_df = 'No anomaly detected'
