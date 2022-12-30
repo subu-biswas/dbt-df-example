@@ -1,6 +1,7 @@
 unique_name: correlation_with_filter_2.0
 action_reference: correlation_with_filter_2.0
 display_name: correlation_with_filter_2.0
+description: correlation_with_filter_2.0
 state: draft
 parameters:
 - param_name: column_y
