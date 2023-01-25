@@ -1,0 +1,35 @@
+unique_name: Get_attach_rate
+action_reference: Get_attach_rate
+display_name: Get_attach_rate
+description: Calculating the attachment rate for every journey
+state: draft
+parameters:
+- param_name: to_date_str
+  df_param_type: string
+  display_name: to_date_str
+  description: to_date_str
+  user_input_required: true
+- param_name: from_date_str
+  df_param_type: string
+  display_name: from_date_str
+  description: from_date_str
+  user_input_required: true
+- param_name: data
+  df_param_type: table
+  display_name: data
+  description: data
+  user_input_required: true
+- param_name: product_param
+  df_param_type: string
+  display_name: product_param
+  description: product_param
+  single_select_options:
+  - availingFreeReschedule
+  - availingFreeCancellation
+  user_input_required: true
+- param_name: group_column
+  df_param_type: column_names_list
+  display_name: group_column
+  description: group_column
+  user_input_required: true
+source_type: python
