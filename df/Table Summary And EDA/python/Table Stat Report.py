@@ -15,38 +15,55 @@ min_freq_count = 5
 
 
 def numeric_column_stat(data):
-    stat = pd.DataFrame()
-    stat = pd.concat([stat, data.apply('count')], axis=1)
-    stat = pd.concat([stat, data.apply(lambda x: list(x.mode())).T], axis=1)
-    stat = pd.concat([stat, data.apply('max')], axis=1)
+    data = pd.DataFrame(data)
+    if data.shape[1] == 1:
+        stat = pd.DataFrame()
+    else:
+        stat = pd.DataFrame()
+        stat = pd.concat([stat, data.apply('count')], axis=1)
+        stat = pd.concat([stat, data.apply(lambda x: list(x.mode())).T], axis=1)
+        stat = pd.concat([stat, data.apply('max')], axis=1)
 
-    qn = [0.95, 0.75, 0.5, 0.25, 0.05]
-    for i in qn:
-        stat = pd.concat([stat, data.quantile(i)], axis=1)
+        qn = [0.95, 0.75, 0.5, 0.25, 0.05]
+        for i in qn:
+            stat = pd.concat([stat, data.quantile(i)], axis=1)
+    
 
-    stat = pd.concat([stat, data.apply('min')], axis=1)
+        stat = pd.concat([stat, data.apply('min')], axis=1)
 
-    stats = ['mean', 'sum', 'nunique', 'skew', 'kurtosis']
-    for i in stats:
-        stat = pd.concat([stat, data.apply(i)], axis=1)
+        stats = ['mean', 'sum', 'nunique', 'skew', 'kurtosis']
+        for i in stats:
+            stat = pd.concat([stat, data.apply(i)], axis=1)
 
-    stat = pd.concat([stat, data.apply(lambda x: max(x) - min(x))], axis=1)
-    stat = pd.concat([stat, data.isna().sum()], axis=1)
+        stat = pd.concat([stat, data.apply(lambda x: max(x) - min(x))], axis=1)
+        stat = pd.concat([stat, data.isna().sum()], axis=1)
 
-    stat.columns = ['VALUES', 'MOST FREQUENT', 'MAX', '95%', 'Q3', 'MEDIAN', 'Q1', '5%', 'MIN', 'AVG', 'TOTAL',
-                    'DISTINCT', 'SKEWNESS', 'KURTOSIS', 'RANGE', 'MISSING']
+        stat.columns = ['VALUES', 'MOST FREQUENT', 'MAX', '95%', 'Q3', 'MEDIAN', 'Q1', '5%', 'MIN', 'AVG', 'TOTAL',
+                        'DISTINCT', 'SKEWNESS', 'KURTOSIS', 'RANGE', 'MISSING']
     return stat
 
 
 def category_column_stat(data):
-    stat = pd.DataFrame()
-    stat = pd.concat([stat, data.apply('count')], axis=1)
-    stat = pd.concat([stat, data.apply(lambda x: list(x.mode())).T], axis=1)
+    data = pd.DataFrame(data)
+    if data.shape[1] == 1:
+        most_freq = data.apply(lambda x: x.mode()).values
+        most_freq = np.reshape(most_freq, len(most_freq)).tolist()
+        stat = {'VALUE': data.apply('count')[0],
+                'MOST FREQUENT': str(most_freq),
+                'DISTINCT': data.apply('nunique')[0],
+                'MISSING': data.isna().sum()[0]}
+        stat = pd.DataFrame(stat,index = [data.columns])
 
-    stat = pd.concat([stat, data.apply('nunique')], axis=1)
-    stat = pd.concat([stat, data.isna().sum()], axis=1)
+    else:
+        stat = pd.DataFrame()
+        stat = pd.concat([stat, data.apply('count')], axis=1)
+        stat = pd.concat([stat, data.apply(lambda x: list(x.mode())).T], axis=1)
 
-    stat.columns = ['VALUES', 'MOST FREQUENT', 'DISTINCT', 'MISSING']
+        stat = pd.concat([stat, data.apply('nunique')], axis=1)
+        stat = pd.concat([stat, data.isna().sum()], axis=1)
+
+    
+        stat.columns = ['VALUES', 'MOST FREQUENT', 'DISTINCT', 'MISSING']
     return stat
 
 
