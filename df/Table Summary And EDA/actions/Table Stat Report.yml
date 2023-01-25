@@ -3,11 +3,6 @@ action_reference: Table Stat Report
 display_name: Table Stat Report
 state: draft
 parameters:
-- param_name: input_table
-  df_param_type: table
-  display_name: Input Table
-  description: Input Raw Table
-  user_input_required: true
 - param_name: Column Category
   df_param_type: string
   display_name: Chose Column Category
@@ -15,5 +10,10 @@ parameters:
   single_select_options:
   - Category
   - Numeric
+  user_input_required: true
+- param_name: input_table
+  df_param_type: table
+  display_name: Input Table
+  description: Input Raw Table
   user_input_required: true
 source_type: python
