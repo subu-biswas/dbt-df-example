@@ -1,0 +1,3 @@
+{
+  "AutoFlowType": "CleanupAutoFlow"
+}
