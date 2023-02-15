@@ -8,6 +8,7 @@ parameters:
 - param_name: Input Table
   df_param_type: table
   display_name: Input Table
+  description: Input Table
   df_tags:
   - TimeSeriesTable
   - TimeSeriesTableWithDimensions
