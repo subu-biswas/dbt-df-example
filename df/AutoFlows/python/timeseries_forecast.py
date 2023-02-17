@@ -15,6 +15,7 @@ threshold_value = df_helper.get_decimal("threhold_value", "Specify The Threshold
 # CONFIGS
 num_row_threshold = 100
 num_cat_threshold = 5
+trend_slope = 0.05
 
 metadata = df_helper.get_table_metadata("input_table")
 
@@ -123,7 +124,21 @@ for primary_dimension_value in primary_dimension_values:
      forecast_df = forecast_df.set_index(timestamp_column)
 
      forecast_df1 = forecast_df1.append(forecast_df, ignore_index=True)
+     
+    # Infering Trend
+     coefficients = np.polyfit(np.array(forecast['y']), np.array(range(1,forecast_period + 1)), 1)
+     slope = coefficients[0]
 
+     if forecast_period > 5:
+         if slope > trend_slope:
+             print("The forecasted time series has an upward trend\n")
+         elif slope < -trend_slope:
+             print("The forecasted time series has a downward trend\n")
+         else:
+             print("The forecasted time series has no trend")
+     else:
+        pass
+     
      if threshold_value == None:
          pass
      else:
