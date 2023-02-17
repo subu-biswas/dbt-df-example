@@ -9,10 +9,13 @@ dimension_col = df_helper.get_column("dimension_col","Groupby","Plese specify it
 forecast_period = df_helper.get_integer("forcast_period", "Forecast Period", "Please select the forecast period")
 frequency = df_helper.get_string("fequency", "Forequency Of The Forecast Period", "Please select frquecy of the forecast period")
 filter_query = df_helper.get_string("filter_query", "Specify Any SQL Query For Filtering", "Please specify any sql query for filtering.")
+threshold_value = df_helper.get_decimal("threhold_value", "Specify The Threshold Value If Any", "Please specify the threshold value if you have any")
+
 
 # CONFIGS
 num_row_threshold = 100
 num_cat_threshold = 5
+trend_slope = 0.05
 
 metadata = df_helper.get_table_metadata("input_table")
 
@@ -34,6 +37,7 @@ frequency_option_to_string = {
             'Seconds': 'S',
             'Years': 'Y'
         }
+frequency_string = frequency
 frequency = frequency_option_to_string.get(frequency)
 print(frequency)
 df = data_filter(df, filter_query)
@@ -104,8 +108,8 @@ for primary_dimension_value in primary_dimension_values:
      time_series = trimmed_df[primary_dimension_value].copy()
      time_series = pd.DataFrame(time_series.reset_index())
      timestamp_column = time_series.columns[0]
-     target_column =  time_series.columns[1]
-     time_series.rename(columns={timestamp_column: 'ds', target_column: 'y'}, inplace=True)
+     target_column1 =  time_series.columns[1]
+     time_series.rename(columns={timestamp_column: 'ds', target_column1: 'y'}, inplace=True)
      model = Prophet(interval_width=0.95)
 
      # Training the model
@@ -116,11 +120,62 @@ for primary_dimension_value in primary_dimension_values:
      forecast = model.predict(future)[['ds', 'yhat']][-forecast_period:]
      forecast.rename(columns={'yhat': 'y'}, inplace=True)
      forecast_df = time_series.append(forecast)
-     forecast_df.rename(columns={'ds': timestamp_column, 'y': target_column}, inplace=True)
+     forecast_df.rename(columns={'ds': timestamp_column, 'y': target_column1}, inplace=True)
      forecast_df = forecast_df.set_index(timestamp_column)
 
      forecast_df1 = forecast_df1.append(forecast_df, ignore_index=True)
+     
+    # Infering Trend
+     coefficients = np.polyfit(np.array(forecast['y']), np.array(range(1,forecast_period + 1)), 1)
+     slope = coefficients[0]
+
+     if forecast_period > 5:
+         if slope > trend_slope:
+             print("The forecasted time series has an upward trend\n")
+         elif slope < -trend_slope:
+             print("The forecasted time series has a downward trend\n")
+         else:
+             print("The forecasted time series has no trend")
+     else:
+        pass
+     
+     if threshold_value == None:
+         pass
+     else:
+        if time_series['y'].tail(1).item() > threshold_value:
+            for i,j in zip(forecast['y'],range(1,forecast_period + 1)):
+                if i < threshold_value:
+                    if dimension_col == None:
+                        s = "1. The " + target_column + " value will drop below " + str(threshold_value) + ".\n"
+                        s = s + "2. The value will drop below threshold within " + str(j) + " " + frequency_string + "."
+                        print(s)
+                        break
+                    else:
+                        s = "1. The " + target_column + " value will drop below " + str(threshold_value) +  " for " + primary_dimension_value + ".\n"
+                        s = s + "2. The value will drop below threshold witin " + str(j)  + " " + frequency_string + "."
+                        print(s)
+                        break
+                else:
+                    pass
+        else:
+            for i,j in zip(forecast['y'],range(1,forecast_period + 1)):
+                if i > threshold_value:
+                    if dimension_col == None:
+                        s = "1. The " + target_column + " value will jump above " + str(threshold_value) + ".\n"
+                        s = s + "2. The value will jump above threshold within " + str(j)+ " " + frequency_string + "."
+                        print(s)
+                        break
+                    else:
+                        s = "1. The " + target_column + " value will jump above " + str(threshold_value) +  " for " + primary_dimension_value + ".\n"
+                        s = s + "2. The value will jump above threshold within " + str(j) + " " + frequency_string + "."
+                        print(s)
+                        break
+                    
+                else:
+                    pass
+    
 
 df_plot.time_series_forecast("Time Series Forecast", forecast_period, forecast_df1[-30+forecast_period:])
+
 
 df_helper.publish(forecast_df1)

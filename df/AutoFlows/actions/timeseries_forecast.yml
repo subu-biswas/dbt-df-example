@@ -10,16 +10,6 @@ parameters:
   description: Plese specify it if want forecast based on a specific category else
     not required.
   user_input_required: true
-- param_name: input_table
-  df_param_type: table
-  display_name: Select The Table
-  description: Input table.
-  user_input_required: true
-- param_name: target_column
-  df_param_type: column
-  display_name: Select The Time Series Column
-  description: Please select the time series column on which forecast Will be generated.
-  user_input_required: true
 - param_name: forcast_period
   df_param_type: int
   display_name: Forecast Period
@@ -43,5 +33,20 @@ parameters:
   - Weeks
   - Years
   - Calendar Days
+  user_input_required: true
+- param_name: threhold_value
+  df_param_type: float
+  display_name: Specify The Threshold Value If Any
+  description: Please specify the threshold value if you have any
+  user_input_required: true
+- param_name: input_table
+  df_param_type: table
+  display_name: Select The Table
+  description: Input table.
+  user_input_required: true
+- param_name: target_column
+  df_param_type: column
+  display_name: Select The Time Series Column
+  description: Please select the time series column on which forecast Will be generated.
   user_input_required: true
 source_type: python
