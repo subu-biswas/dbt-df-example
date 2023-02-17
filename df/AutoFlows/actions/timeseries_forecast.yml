@@ -21,7 +21,7 @@ parameters:
   description: Please select the time series column on which forecast Will be generated.
   user_input_required: true
 - param_name: forcast_period
-  df_param_type: string
+  df_param_type: int
   display_name: Forecast Period
   description: Please select the forecast period
   user_input_required: true
@@ -33,15 +33,15 @@ parameters:
 - param_name: fequency
   df_param_type: string
   display_name: Forequency Of The Forecast Period
-  description: Please select frrquecy of the forecast period
+  description: Please select frquecy of the forecast period
   single_select_options:
   - Business Days
-  - Calender Days
   - Hours
   - Minutes
   - Months
   - Seconds
   - Weeks
   - Years
+  - Calendar Days
   user_input_required: true
 source_type: python
