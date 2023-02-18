@@ -1,0 +1,55 @@
+unique_name: forecast_with_filter
+action_reference: forecast_with_filter
+display_name: forecast_with_filter
+state: draft
+parameters:
+- param_name: df
+  df_param_type: table
+  display_name: Input Table
+  description: 'Select the raw table '
+  user_input_required: true
+- param_name: forecast_period
+  df_param_type: int
+  display_name: Select The Forecast Period
+  description: Please specify the forecasting period
+  single_select_options:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  - '15'
+  - '16'
+  - '17'
+  - '18'
+  - '19'
+  - '20'
+  - '21'
+  - '22'
+  - '23'
+  - '24'
+  - '8'
+  - '7'
+  user_input_required: true
+- param_name: timestamp_column
+  df_param_type: column
+  display_name: Timestamp Column
+  description: Please select the column which uniquely specify the timestamp
+  user_input_required: true
+- param_name: target_column
+  df_param_type: column
+  display_name: Target Column
+  description: Please select the target column for which forecast is required
+  user_input_required: true
+- param_name: sql_filter
+  df_param_type: string
+  display_name: Sql Query For Filtering Table
+  user_input_required: true
+source_type: python
