@@ -1,0 +1,6 @@
+name: customer_analytics
+version: 0.1
+display_name: Customer Analytics
+description: This application consists analytics modules like RFM segmentation, Churn
+  prediction, Customer lifetime value prediction, Conversion propensity prediction
+state: draft
