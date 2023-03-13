@@ -1,1 +1,1 @@
-select COUNT(*) from {table_name} 
+select COUNT(*) from {{ table_name }} 
