@@ -1,0 +1,6 @@
+prompt: print my name
+reference: Test app.second
+answer_type: Action
+parameter_values:
+  hello: my name
+author: darshan.rathi@data-facade.com
