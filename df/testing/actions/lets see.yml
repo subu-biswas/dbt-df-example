@@ -1,0 +1,18 @@
+unique_name: lets see
+action_reference: lets see
+display_name: lets see
+state: draft
+parameters:
+- param_name: input_table
+  df_param_type: table
+  display_name: Input Table
+  description: Input Raw Table
+  user_input_required: true
+  is_optional: false
+- param_name: timestamp_column
+  df_param_type: column
+  display_name: Timestamp Column
+  description: Timestamp Column
+  user_input_required: true
+  is_optional: false
+source_type: python
