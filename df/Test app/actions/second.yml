@@ -1,0 +1,12 @@
+unique_name: second
+action_reference: second
+display_name: second
+state: draft
+parameters:
+- param_name: hello
+  df_param_type: string
+  display_name: hello
+  description: hello
+  user_input_required: true
+  is_optional: false
+source_type: python

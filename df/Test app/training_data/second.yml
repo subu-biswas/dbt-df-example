@@ -1,0 +1,4 @@
+prompt: second
+reference: Test app.second
+answer_type: Action
+parameter_values: {}
