@@ -1,0 +1,49 @@
+unique_name: create_pivot_table_with_datetime_rows
+action_reference: create_pivot_table_with_datetime_rows
+display_name: create_pivot_table_with_datetime_rows
+description: create_pivot_table
+state: draft
+parameters:
+- param_name: sql_filter
+  df_param_type: string
+  display_name: sql_filter
+  description: SQL Filter(Optional)
+  user_input_required: true
+- param_name: value_type
+  df_param_type: string
+  display_name: value_type
+  description: 'Aggregation Type '
+  single_select_options:
+  - Count
+  - Count Percentage
+  - Unique Count
+  - Average
+  - Maximum
+  - Minimum
+  - Median
+  - Total
+  - 95 Percentile
+  - 80 Percentile
+  - 90 Percentile
+  user_input_required: true
+- param_name: columns
+  df_param_type: column
+  display_name: columns
+  description: Columns
+  user_input_required: true
+- param_name: datetime_column
+  df_param_type: column
+  display_name: datetime_column
+  description: Select the datetime column for rows of the pivot table.
+  user_input_required: true
+- param_name: data
+  df_param_type: table
+  display_name: data
+  description: Table
+  user_input_required: true
+- param_name: values
+  df_param_type: column
+  display_name: values
+  description: Values
+  user_input_required: true
+source_type: python

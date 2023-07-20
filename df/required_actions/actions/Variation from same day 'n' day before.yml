@@ -1,0 +1,58 @@
+unique_name: Variation from same day 'n' day before
+action_reference: Variation from same day 'n' day before
+display_name: Variation from same day 'n' day before
+state: draft
+parameters:
+- param_name: threshold_alert
+  df_param_type: int
+  display_name: Threshold Alert
+  description: Threshold Alert
+  single_select_options:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '10'
+  - '15'
+  - '20'
+  - '25'
+  - '30'
+  user_input_required: true
+- param_name: email
+  df_param_type: string
+  display_name: Enter Emails
+  description: Enter the emails to get the alert
+  user_input_required: true
+- param_name: input_table
+  df_param_type: table
+  display_name: Input Table
+  description: Input Raw Table
+  user_input_required: true
+- param_name: datetime_column
+  df_param_type: column
+  display_name: Chose Time Stamp Column
+  description: Timestamp Column
+  user_input_required: true
+- param_name: metric_column
+  df_param_type: column
+  display_name: Chose Metric Column
+  description: Metric Column
+  user_input_required: true
+- param_name: window
+  df_param_type: int
+  display_name: Window (in days)
+  description: Window
+  single_select_options:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  user_input_required: true
+source_type: python
