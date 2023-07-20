@@ -1,0 +1,72 @@
+unique_name: Anomaly Detection Application
+flow_actions:
+- action_reference: create_pivot_table
+  parameters:
+  - param_name: value_type
+    default_value: Total
+  - param_name: columns
+    global_parameter: Dimension
+  - param_name: sql_filter
+    default_value: optional
+  - param_name: values
+    global_parameter: Enter the KPIs
+  - param_name: data
+    global_parameter: Table
+  - param_name: rows
+    global_parameter: Time Stamp Column
+  display_name: Please wait. Transforming the table.
+  stage_name: Anomaly Detection
+- action_reference: anomaly detection modified
+  parameters:
+  - param_name: timestamp_column
+    global_parameter: Time Stamp Column
+  - param_name: forecast_period
+    default_value: '4'
+  - param_name: observation_period
+    default_value: '7'
+  - param_name: email
+    default_value: rupam.basu@data-facade.com
+  - param_name: df
+    source_action: create_pivot_table-0
+  - param_name: threshold_percentage
+    global_parameter: Threshold % Change
+  display_name: Please wait. Checking for anomaly.
+  stage_name: Anomaly Detection
+display_name: Anomaly Detection Application
+parameters:
+- param_name: Dimension
+  df_param_type: column
+  display_name: Dimension
+  description: Dimension
+  user_input_required: true
+- param_name: Table
+  df_param_type: table
+  display_name: Table
+  description: Table
+  user_input_required: true
+- param_name: Enter the KPIs
+  df_param_type: column
+  display_name: Enter the KPIs
+  description: Enter the KPIs
+  user_input_required: true
+- param_name: Time Stamp Column
+  df_param_type: column
+  display_name: Time Stamp Column
+  description: Time Stamp Column
+  user_input_required: true
+- param_name: Threshold % Change
+  df_param_type: int
+  display_name: Threshold % Change
+  description: Threshold % Change
+  single_select_options:
+  - '2'
+  - '3'
+  - '5'
+  - '10'
+  - '15'
+  - '20'
+  - '25'
+  - '30'
+  - '35'
+  user_input_required: true
+description: ''
