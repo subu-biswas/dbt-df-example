@@ -1,1 +1,0 @@
-{{ investigate_sales_drop(p1,r1) }}
