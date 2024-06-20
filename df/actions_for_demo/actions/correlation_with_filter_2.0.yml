@@ -1,0 +1,27 @@
+unique_name: correlation_with_filter_2.0
+action_reference: correlation_with_filter_2.0
+display_name: correlation_with_filter_2.0
+description: correlation_with_filter_2.0
+state: draft
+parameters:
+- param_name: column_y
+  df_param_type: column
+  display_name: Column Y
+  description: Second Column
+  user_input_required: true
+- param_name: input_table
+  df_param_type: table
+  display_name: Input Table
+  description: Input Raw Table
+  user_input_required: true
+- param_name: column_x
+  df_param_type: column
+  display_name: Column X
+  description: First Column
+  user_input_required: true
+- param_name: sql_query
+  df_param_type: string
+  display_name: Type the filtering query
+  description: Sql query to filter the data
+  user_input_required: true
+source_type: python
