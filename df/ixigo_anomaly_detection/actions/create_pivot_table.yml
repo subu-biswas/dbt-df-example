@@ -1,0 +1,49 @@
+unique_name: create_pivot_table
+action_reference: create_pivot_table
+display_name: create_pivot_table
+description: create_pivot_table
+state: draft
+parameters:
+- param_name: columns
+  df_param_type: column
+  display_name: Columns
+  description: Columns
+  user_input_required: true
+- param_name: data
+  df_param_type: table
+  display_name: Table
+  description: Table
+  user_input_required: true
+- param_name: rows
+  df_param_type: column
+  display_name: Rows
+  description: Rows
+  user_input_required: true
+- param_name: values
+  df_param_type: column
+  display_name: Values
+  description: Values
+  user_input_required: true
+- param_name: sql_filter
+  df_param_type: string
+  display_name: SQL Filter(Optional)
+  description: SQL Filter(Optional)
+  user_input_required: true
+- param_name: value_type
+  df_param_type: string
+  display_name: 'Aggregation Type '
+  description: 'Aggregation Type '
+  single_select_options:
+  - Count
+  - Count Percentage
+  - Unique Count
+  - Average
+  - Maximum
+  - Minimum
+  - Median
+  - Total
+  - 95 Percentile
+  - 80 Percentile
+  - 90 Percentile
+  user_input_required: true
+source_type: python
